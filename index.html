@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>शब्द जोड़ो</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #fbf8f2; --fg: #1f1b16; --muted: #6b6257; --tile: #ece4d6; --tile-hover: #e2d8c6;
+  --tile-sel: #5a4a3a; --tile-sel-fg: #fff; --btn-border: #1f1b16; --card: #fffdf9; --hint: #e07a1f;
+  --lv0: #f6d860; --lv1: #9fcb6b; --lv2: #9cb9f0; --lv3: #c08ad6;
+  --toast-bg: #1f1b16; --toast-fg: #fff; --bar: #8b7b69;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #171411; --fg: #f3ede4; --muted: #a99e90; --tile: #322b24; --tile-hover: #3d352d;
+    --tile-sel: #e8dccb; --tile-sel-fg: #171411; --btn-border: #f3ede4; --card: #211c18; --hint: #ffa552;
+    --toast-bg: #f3ede4; --toast-fg: #171411; --bar: #7d705f;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #171411; --fg: #f3ede4; --muted: #a99e90; --tile: #322b24; --tile-hover: #3d352d;
+  --tile-sel: #e8dccb; --tile-sel-fg: #171411; --btn-border: #f3ede4; --card: #211c18; --hint: #ffa552;
+  --toast-bg: #f3ede4; --toast-fg: #171411; --bar: #7d705f;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font-family: "Mukta", "Noto Sans Devanagari", system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+main { max-width: 560px; margin: 0 auto; padding: 16px; }
+header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+h1 { font-size: 1.6rem; margin: 0; font-weight: 800; white-space: nowrap; }
+.icons { display: flex; gap: 4px; }
+.icon-btn {
+  width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%;
+  background: none; border: none; color: var(--fg); cursor: pointer;
+}
+.icon-btn:hover { background: var(--tile); }
+.icon-btn svg { width: 22px; height: 22px; }
+.sub { color: var(--muted); margin: 2px 0 14px; display: flex; justify-content: space-between; gap: 8px; }
+.board { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.tile {
+  aspect-ratio: 1.35; border: none; border-radius: 8px; background: var(--tile); color: var(--fg);
+  font: 600 clamp(0.95rem, 4.2vw, 1.25rem) "Mukta", sans-serif; cursor: pointer; padding: 4px;
+  transition: transform .1s, background .15s; line-height: 1.15; overflow-wrap: anywhere; position: relative;
+}
+.tile.long { font-size: clamp(0.8rem, 3.4vw, 1.05rem); }
+.tile:hover { background: var(--tile-hover); }
+.tile:active { transform: scale(.96); }
+.tile.sel { background: var(--tile-sel); color: var(--tile-sel-fg); }
+.tile.hint { box-shadow: inset 0 0 0 3px var(--hint); }
+.tile.hop { animation: hop .32s ease both; }
+@keyframes hop { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.solved-row {
+  grid-column: 1 / -1; border-radius: 8px; padding: 10px; text-align: center; color: #1f1b16;
+  min-height: 72px; display: flex; flex-direction: column; justify-content: center;
+}
+.solved-row.fresh { animation: slide .4s ease; }
+.solved-row strong { font-size: 1.1rem; }
+@keyframes slide { from { transform: scale(.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.lv0 { background: var(--lv0); } .lv1 { background: var(--lv1); }
+.lv2 { background: var(--lv2); } .lv3 { background: var(--lv3); }
+.shake { animation: shake .35s; }
+@keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+.mistakes { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 16px 0; color: var(--muted); }
+#dots { display: flex; gap: 6px; }
+.dot { display: inline-block; width: 13px; height: 13px; border-radius: 50%; background: var(--tile-sel); transition: background .3s; }
+.dot.used { background: var(--tile); }
+.controls { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+.btn {
+  border: 1px solid var(--btn-border); background: transparent; color: var(--fg); border-radius: 999px;
+  padding: 9px 16px; font: 600 1rem "Mukta", sans-serif; cursor: pointer;
+}
+.btn.primary { background: var(--fg); color: var(--bg); }
+.btn:disabled { opacity: .4; cursor: default; }
+.toast {
+  position: fixed; top: 18px; left: 50%; transform: translateX(-50%); background: var(--toast-bg); color: var(--toast-fg);
+  padding: 8px 16px; border-radius: 8px; font-weight: 600; opacity: 0; pointer-events: none; transition: opacity .2s; z-index: 30;
+}
+.toast.show { opacity: 1; }
+.result { text-align: center; margin-top: 18px; }
+.result h2 { margin: 0 0 4px; }
+.grid-emoji { font-size: 1.4rem; line-height: 1.25; margin: 8px 0; white-space: pre; }
+.muted { color: var(--muted); }
+dialog {
+  border: none; border-radius: 14px; background: var(--card); color: var(--fg);
+  max-width: 440px; width: calc(100% - 32px); max-height: calc(100% - 48px); padding: 20px;
+}
+dialog::backdrop { background: rgba(0,0,0,.45); }
+dialog h2 { margin-top: 0; }
+dialog ul { padding-left: 20px; }
+.dlg-head { display: flex; justify-content: space-between; align-items: center; }
+.dlg-head h2 { margin: 0; }
+.swatches { display: flex; gap: 6px; margin: 6px 0; }
+.swatches span { flex: 1; padding: 4px; border-radius: 6px; text-align: center; color: #1f1b16; font-size: .85rem; }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 14px 0; text-align: center; }
+.stats b { display: block; font-size: 1.6rem; line-height: 1.1; }
+.stats small { color: var(--muted); }
+.dist { display: grid; grid-template-columns: auto 1fr; gap: 6px 8px; align-items: center; }
+.dist .bar { background: var(--bar); color: #fff; border-radius: 4px; padding: 0 6px; min-width: 22px; text-align: right; font-weight: 600; }
+.dist .bar.cur { background: #4f8a3a; }
+.archive { display: grid; grid-template-columns: repeat(auto-fill, minmax(52px, 1fr)); gap: 6px; margin-top: 12px; }
+.archive button {
+  border: none; border-radius: 8px; background: var(--tile); color: var(--fg); padding: 8px 0 6px;
+  font: 600 .95rem "Mukta", sans-serif; cursor: pointer; line-height: 1.1;
+}
+.archive button small { display: block; font-size: .8rem; }
+.archive button.won { background: var(--lv1); color: #1f1b16; }
+.archive button.lost { background: #e9a39b; color: #1f1b16; }
+.archive button.today { outline: 2px solid var(--fg); }
+.setting { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--tile); gap: 12px; }
+.setting select, .setting input { font: inherit; }
+select { background: var(--bg); color: var(--fg); border: 1px solid var(--btn-border); border-radius: 8px; padding: 4px 8px; }
+#confetti { position: fixed; inset: 0; pointer-events: none; z-index: 20; }
+.hidden { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>शब्द जोड़ो</h1>
+    <div class="icons">
+      <button class="icon-btn" id="helpBtn" aria-label="कैसे खेलें" title="कैसे खेलें">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5V14"/><circle cx="12" cy="17.2" r=".6" fill="currentColor"/></svg>
+      </button>
+      <button class="icon-btn" id="archiveBtn" aria-label="पिछली पहेलियाँ" title="पिछली पहेलियाँ">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>
+      </button>
+      <button class="icon-btn" id="statsBtn" aria-label="आँकड़े" title="आँकड़े">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 20V11M12 20V5M19 20v-6"/></svg>
+      </button>
+      <button class="icon-btn" id="settingsBtn" aria-label="सेटिंग्स" title="सेटिंग्स">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>
+      </button>
+    </div>
+  </header>
+  <p class="sub"><span id="sub"></span><span id="timer"></span></p>
+
+  <div class="board" id="board" aria-live="polite"></div>
+
+  <div class="mistakes" id="mistakesWrap">
+    <span>बची हुई गलतियाँ:</span><span id="dots"></span>
+  </div>
+
+  <div class="controls" id="controls">
+    <button class="btn" id="shuffleBtn">मिलाएँ</button>
+    <button class="btn" id="hintBtn">संकेत</button>
+    <button class="btn" id="clearBtn">हटाएँ</button>
+    <button class="btn primary" id="submitBtn" disabled>जमा करें</button>
+  </div>
+
+  <section class="result hidden" id="result">
+    <h2 id="resultTitle"></h2>
+    <div class="muted" id="resultMeta"></div>
+    <div class="grid-emoji" id="emojiGrid"></div>
+    <p class="muted" id="nextIn"></p>
+    <div class="controls">
+      <button class="btn primary" id="shareBtn">नतीजा शेयर करें</button>
+      <button class="btn" id="resultStatsBtn">आँकड़े</button>
+      <button class="btn" id="practiceBtn">अभ्यास पहेली</button>
+      <button class="btn hidden" id="todayBtn">आज की पहेली</button>
+    </div>
+  </section>
+</main>
+
+<canvas id="confetti" class="hidden"></canvas>
+<div class="toast" id="toast" role="status"></div>
+
+<dialog id="help">
+  <h2>कैसे खेलें</h2>
+  <p>16 शब्दों में से <b>4-4 शब्दों के समूह</b> बनाइए जिनमें कोई बात एक जैसी हो।</p>
+  <ul>
+    <li>चार शब्द चुनें और <b>जमा करें</b> दबाएँ।</li>
+    <li>आपके पास <b>4 गलतियाँ</b> हैं।</li>
+    <li>"बस एक शब्द गलत!" का मतलब है कि चार में से तीन शब्द एक ही समूह के हैं।</li>
+    <li>अटक गए? हर पहेली में एक बार <b>संकेत</b> ले सकते हैं।</li>
+    <li>हर दिन नई पहेली आती है। पुरानी पहेलियाँ <b>कैलेंडर</b> बटन से खेलें।</li>
+  </ul>
+  <p>समूहों का रंग कठिनाई बताता है:</p>
+  <div class="swatches">
+    <span class="lv0">आसान</span><span class="lv1">ठीक-ठाक</span><span class="lv2">कठिन</span><span class="lv3">बहुत कठिन</span>
+  </div>
+  <form method="dialog" style="text-align:center;margin-top:12px"><button class="btn primary">खेलें</button></form>
+</dialog>
+
+<dialog id="statsDlg">
+  <div class="dlg-head"><h2>आँकड़े</h2><form method="dialog"><button class="icon-btn" aria-label="बंद करें">✕</button></form></div>
+  <div class="stats" id="statsNums"></div>
+  <h3 style="margin:8px 0">जीत में कितनी गलतियाँ</h3>
+  <div class="dist" id="dist"></div>
+</dialog>
+
+<dialog id="archiveDlg">
+  <div class="dlg-head"><h2>पिछली पहेलियाँ</h2><form method="dialog"><button class="icon-btn" aria-label="बंद करें">✕</button></form></div>
+  <p class="muted" style="margin:6px 0 0">कोई भी पुरानी पहेली खेलें। इनसे आपका लगातार जीतने का रिकॉर्ड नहीं बदलता।</p>
+  <div class="archive" id="archiveGrid"></div>
+</dialog>
+
+<dialog id="settingsDlg">
+  <div class="dlg-head"><h2>सेटिंग्स</h2><form method="dialog"><button class="icon-btn" aria-label="बंद करें">✕</button></form></div>
+  <label class="setting"><span>आवाज़</span><input type="checkbox" id="soundToggle"></label>
+  <label class="setting"><span>थीम</span>
+    <select id="themeSelect"><option value="system">सिस्टम जैसी</option><option value="light">हल्की</option><option value="dark">गहरी</option></select>
+  </label>
+  <div class="setting"><span>सारी प्रगति मिटाएँ</span><button class="btn" id="resetBtn">मिटाएँ</button></div>
+</dialog>
+
+<script src="puzzles.js"></script>
+<script>
+const MAX_MISTAKES = 4;
+const EPOCH = new Date(2026, 0, 1); // day 0 = puzzle #1
+const EMOJI = ["🟨", "🟩", "🟦", "🟪"];
+const STORE = "shabd-jodo:";
+
+const $ = (id) => document.getElementById(id);
+const load = (k, d) => { try { const v = localStorage.getItem(STORE + k); return v == null ? d : JSON.parse(v); } catch { return d; } };
+const save = (k, v) => { try { localStorage.setItem(STORE + k, JSON.stringify(v)); } catch {} };
+const mod = (a, n) => ((a % n) + n) % n;
+const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// Same rule as the original: days since a fixed local-midnight epoch, wrapped over the puzzle list.
+function dayNumber(d = new Date()) {
+  const midnight = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+  return Math.round((midnight - EPOCH) / 864e5);
+}
+const puzzleFor = (day) => mod(day, PUZZLES.length);
+function shuffled(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+  return a;
+}
+function fmtTime(ms) {
+  const s = Math.floor(ms / 1000);
+  return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
+}
+
+let state;          // see newState()
+let selected = [];
+let busy = false;   // true while a solve animation plays
+let freshLevel = null;
+
+function groupsOf(idx) { return PUZZLES[idx].groups.map(([name, words], level) => ({ name, words, level })); }
+
+function newState(mode, day, puzzleIdx) {
+  return { mode, day, puzzleIdx, count: PUZZLES.length, order: shuffled(groupsOf(puzzleIdx).flatMap((g) => g.words)),
+           solved: [], mistakes: 0, guesses: [], seen: [], done: false, won: false,
+           hintWord: null, elapsed: 0, started: false };
+}
+
+// Daily and archive games are saved per day; practice games are throwaway.
+function openDay(day) {
+  const mode = day === dayNumber() ? "daily" : "archive";
+  const saved = load("game-" + day, null);
+  state = saved && saved.count === PUZZLES.length ? saved : newState(mode, day, puzzleFor(day));
+  state.mode = mode;
+  selected = [];
+  render();
+}
+const startDaily = () => openDay(dayNumber());
+
+function startPractice() {
+  let idx;
+  do { idx = Math.floor(Math.random() * PUZZLES.length); } while (PUZZLES.length > 1 && idx === state.puzzleIdx);
+  state = newState("practice", null, idx);
+  selected = [];
+  render();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function persist() { if (state.mode !== "practice") save("game-" + state.day, state); }
+
+function subtitle() {
+  if (state.mode === "daily") return `आज की पहेली #${state.day + 1}`;
+  if (state.mode === "archive") return `पुरानी पहेली #${state.day + 1}`;
+  return "अभ्यास पहेली";
+}
+
+function render() {
+  const board = $("board");
+  board.innerHTML = "";
+  const groups = groupsOf(state.puzzleIdx);
+  // On a loss, reveal the remaining groups in difficulty order.
+  const shown = state.done ? [...state.solved, ...groups.map((g) => g.level).filter((l) => !state.solved.includes(l))] : state.solved;
+  for (const lvl of shown) {
+    const g = groups[lvl];
+    const row = document.createElement("div");
+    row.className = "solved-row lv" + lvl + (lvl === freshLevel ? " fresh" : "");
+    row.innerHTML = `<strong></strong><span></span>`;
+    row.querySelector("strong").textContent = g.name;
+    row.querySelector("span").textContent = g.words.join(", ");
+    board.appendChild(row);
+  }
+  freshLevel = null;
+  const solvedWords = new Set(shown.flatMap((l) => groups[l].words));
+  for (const w of state.order.filter((w) => !solvedWords.has(w))) {
+    const b = document.createElement("button");
+    b.className = "tile" + (selected.includes(w) ? " sel" : "") + (w === state.hintWord ? " hint" : "") + (w.length > 7 ? " long" : "");
+    b.textContent = w;
+    b.dataset.word = w;
+    b.setAttribute("aria-pressed", selected.includes(w));
+    b.onclick = () => toggle(w);
+    board.appendChild(b);
+  }
+  $("sub").textContent = subtitle();
+  $("dots").innerHTML = Array.from({ length: MAX_MISTAKES }, (_, i) =>
+    `<span class="dot${i < state.mistakes ? " used" : ""}"></span>`).join("");
+  $("submitBtn").disabled = selected.length !== 4 || busy;
+  $("clearBtn").disabled = selected.length === 0;
+  $("hintBtn").disabled = !!state.hintWord;
+  for (const id of ["controls", "mistakesWrap"]) $(id).classList.toggle("hidden", state.done);
+  $("result").classList.toggle("hidden", !state.done);
+  renderTimer();
+  if (state.done) renderResult();
+}
+
+function toggle(w) {
+  if (state.done || busy) return;
+  state.started = true;
+  if (selected.includes(w)) selected = selected.filter((x) => x !== w);
+  else if (selected.length < 4) { selected.push(w); sound("tap"); }
+  render();
+}
+
+function levelOf(w) { return groupsOf(state.puzzleIdx).find((g) => g.words.includes(w)).level; }
+
+async function submit() {
+  if (selected.length !== 4 || busy) return;
+  const seenKey = selected.slice().sort().join("|");
+  if (state.seen.includes(seenKey)) { toast("यह पहले ही आज़मा चुके हैं"); return; }
+  state.seen.push(seenKey);
+  const levels = selected.map(levelOf);
+  state.guesses.push(levels);
+  const counts = {};
+  for (const l of levels) counts[l] = (counts[l] || 0) + 1;
+  const best = Math.max(...Object.values(counts));
+  const tiles = selected.map((w) => document.querySelector(`.tile[data-word="${CSS.escape(w)}"]`));
+
+  if (best === 4) {
+    busy = true;
+    render();
+    if (!reducedMotion) {
+      selected.map((w) => document.querySelector(`.tile[data-word="${CSS.escape(w)}"]`))
+        .forEach((t, i) => { t.style.animationDelay = i * 90 + "ms"; t.classList.add("hop"); });
+      await wait(650);
+    }
+    sound("correct");
+    state.solved.push(levels[0]);
+    freshLevel = levels[0];
+    selected = [];
+    busy = false;
+    if (state.solved.length === 4) { finish(true); return; }
+  } else {
+    state.mistakes++;
+    sound("wrong");
+    if (navigator.vibrate) navigator.vibrate(120);
+    toast(best === 3 ? "बस एक शब्द गलत!" : "गलत जवाब");
+    tiles.forEach((t) => { t.classList.remove("shake"); void t.offsetWidth; t.classList.add("shake"); });
+    if (state.mistakes >= MAX_MISTAKES) {
+      selected = [];
+      persist();
+      setTimeout(() => finish(false), 450);
+      return;
+    }
+  }
+  persist();
+  render();
+}
+
+function useHint() {
+  if (state.done || state.hintWord) return;
+  const groups = groupsOf(state.puzzleIdx);
+  const easiest = groups.find((g) => !state.solved.includes(g.level));
+  state.hintWord = easiest.words[Math.floor(Math.random() * 4)];
+  state.started = true;
+  toast("यह शब्द सबसे आसान समूह का है");
+  persist();
+  render();
+}
+
+function finish(won) {
+  state.done = true;
+  state.won = won;
+  if (state.mode !== "practice") {
+    const prev = load("result-" + state.day, null);
+    if (!prev) {
+      save("result-" + state.day, { won, mistakes: state.mistakes, time: state.elapsed });
+      const s = getStats();
+      s.played++;
+      if (won) { s.wins++; s.dist[state.mistakes]++; } else s.dist[4]++;
+      if (state.mode === "daily") {
+        if (won) {
+          s.streak = s.lastWinDay === state.day - 1 ? s.streak + 1 : 1;
+          s.lastWinDay = state.day;
+          s.maxStreak = Math.max(s.maxStreak, s.streak);
+        } else s.streak = 0;
+      }
+      save("stats", s);
+    }
+  }
+  persist();
+  render();
+  if (won) {
+    sound("win");
+    confetti();
+    toast(state.mistakes === 0 ? "शानदार! एक भी गलती नहीं 🎉" : "बहुत बढ़िया! 🎉");
+  } else toast("अगली बार ज़रूर!");
+}
+
+function getStats() {
+  const s = load("stats", {});
+  return { played: 0, wins: 0, streak: 0, maxStreak: 0, lastWinDay: null, ...s, dist: s.dist || [0, 0, 0, 0, 0] };
+}
+
+function emojiGrid() { return state.guesses.map((g) => g.map((l) => EMOJI[l]).join("")).join("\n"); }
+
+function renderResult() {
+  $("resultTitle").textContent = state.won ? "आपने पहेली सुलझा ली!" : "इस बार नहीं हो पाया";
+  $("resultMeta").textContent = `समय ${fmtTime(state.elapsed)} · गलतियाँ ${state.mistakes}` + (state.hintWord ? " · 💡 संकेत लिया" : "");
+  $("emojiGrid").textContent = emojiGrid();
+  $("todayBtn").classList.toggle("hidden", state.mode === "daily");
+  updateCountdown();
+}
+
+function renderTimer() {
+  $("timer").textContent = state.started || state.done ? "⏱ " + fmtTime(state.elapsed) : "";
+}
+
+function updateCountdown() {
+  if (state.mode === "daily" && state.day !== dayNumber() && state.done) { startDaily(); return; }
+  if (!state.done) return;
+  if (state.mode !== "daily") { $("nextIn").textContent = ""; return; }
+  const now = new Date();
+  const ms = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1) - now;
+  const pad = (n) => String(n).padStart(2, "0");
+  $("nextIn").textContent = `अगली पहेली: ${pad(Math.floor(ms / 36e5))}:${pad(Math.floor((ms % 36e5) / 6e4))}:${pad(Math.floor((ms % 6e4) / 1e3))}`;
+}
+
+// The timer runs only while the game is in progress and the tab is visible.
+let lastTick = Date.now();
+setInterval(() => {
+  const now = Date.now();
+  if (state && state.started && !state.done && !document.hidden) {
+    state.elapsed += now - lastTick;
+    renderTimer();
+    if (Math.floor(state.elapsed / 1000) % 5 === 0) persist();
+  }
+  lastTick = now;
+  if (state) updateCountdown();
+}, 1000);
+document.addEventListener("visibilitychange", () => { lastTick = Date.now(); if (document.hidden && state) persist(); });
+
+async function share() {
+  const label = state.mode === "practice" ? "(अभ्यास)" : `#${state.day + 1}`;
+  const text = `शब्द जोड़ो ${label}${state.hintWord ? " 💡" : ""}\n⏱ ${fmtTime(state.elapsed)}\n${emojiGrid()}`;
+  try {
+    if (navigator.share) await navigator.share({ text });
+    else { await navigator.clipboard.writeText(text); toast("नतीजा कॉपी हो गया"); }
+  } catch {}
+}
+
+// ---- dialogs ----
+function openStats() {
+  const s = getStats();
+  const pct = s.played ? Math.round((s.wins / s.played) * 100) : 0;
+  $("statsNums").innerHTML = [["खेले", s.played], ["जीत %", pct], ["लगातार", s.streak], ["सबसे लंबा", s.maxStreak]]
+    .map(([k, v]) => `<div><b>${v}</b><small>${k}</small></div>`).join("");
+  const max = Math.max(1, ...s.dist);
+  const cur = state.done && state.mode !== "practice" ? (state.won ? state.mistakes : 4) : -1;
+  $("dist").innerHTML = s.dist.map((n, i) =>
+    `<span>${i === 4 ? "हार" : i}</span><div class="bar${i === cur ? " cur" : ""}" style="width:${Math.max(8, (n / max) * 100)}%">${n}</div>`).join("");
+  $("statsDlg").showModal();
+}
+
+function openArchive() {
+  const today = dayNumber();
+  const grid = $("archiveGrid");
+  grid.innerHTML = "";
+  for (let d = today; d >= 0; d--) {
+    const r = load("result-" + d, null);
+    const b = document.createElement("button");
+    b.className = (r ? (r.won ? "won" : "lost") : "") + (d === today ? " today" : "");
+    b.innerHTML = `${d + 1}<small>${r ? (r.won ? "✓" : "✗") : d === today ? "आज" : "&nbsp;"}</small>`;
+    b.setAttribute("aria-label", `पहेली ${d + 1}`);
+    b.onclick = () => { $("archiveDlg").close(); openDay(d); window.scrollTo({ top: 0 }); };
+    grid.appendChild(b);
+  }
+  $("archiveDlg").showModal();
+}
+
+function applyTheme(t) {
+  if (t === "system") document.documentElement.removeAttribute("data-theme");
+  else document.documentElement.dataset.theme = t;
+}
+const settings = { sound: false, theme: "system", ...load("settings", {}) };
+applyTheme(settings.theme);
+$("soundToggle").checked = settings.sound;
+$("themeSelect").value = settings.theme;
+$("soundToggle").onchange = (e) => { settings.sound = e.target.checked; save("settings", settings); sound("tap"); };
+$("themeSelect").onchange = (e) => { settings.theme = e.target.value; save("settings", settings); applyTheme(settings.theme); };
+$("resetBtn").onclick = () => {
+  if (!confirm("क्या आप सारी प्रगति और आँकड़े मिटाना चाहते हैं?")) return;
+  try { Object.keys(localStorage).filter((k) => k.startsWith(STORE) && !k.endsWith("settings")).forEach((k) => localStorage.removeItem(k)); } catch {}
+  $("settingsDlg").close();
+  startDaily();
+  toast("प्रगति मिटा दी गई");
+};
+
+// ---- sound (Web Audio, off by default) ----
+let audioCtx;
+function sound(kind) {
+  if (!settings.sound) return;
+  try {
+    audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+    const notes = { tap: [[660, 0, .05]], wrong: [[220, 0, .18], [180, .12, .2]],
+                    correct: [[523, 0, .12], [659, .1, .12], [784, .2, .18]],
+                    win: [[523, 0, .15], [659, .12, .15], [784, .24, .15], [1047, .36, .3]] }[kind];
+    for (const [freq, at, dur] of notes) {
+      const o = audioCtx.createOscillator(), g = audioCtx.createGain();
+      o.type = kind === "wrong" ? "sawtooth" : "triangle";
+      o.frequency.value = freq;
+      const t = audioCtx.currentTime + at;
+      g.gain.setValueAtTime(0.0001, t);
+      g.gain.exponentialRampToValueAtTime(kind === "wrong" ? 0.06 : 0.12, t + 0.01);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+      o.connect(g).connect(audioCtx.destination);
+      o.start(t); o.stop(t + dur + 0.02);
+    }
+  } catch {}
+}
+
+// ---- confetti ----
+function confetti() {
+  if (reducedMotion) return;
+  const c = $("confetti"), ctx = c.getContext("2d");
+  c.width = innerWidth * devicePixelRatio; c.height = innerHeight * devicePixelRatio;
+  ctx.scale(devicePixelRatio, devicePixelRatio);
+  c.classList.remove("hidden");
+  const colors = ["#f6d860", "#9fcb6b", "#9cb9f0", "#c08ad6", "#e07a1f"];
+  const parts = Array.from({ length: 120 }, () => ({
+    x: innerWidth / 2 + (Math.random() - .5) * 80, y: innerHeight * .35,
+    vx: (Math.random() - .5) * 9, vy: -Math.random() * 9 - 3, r: Math.random() * 6 + 4,
+    rot: Math.random() * 6, vr: (Math.random() - .5) * .3, color: colors[Math.floor(Math.random() * colors.length)],
+  }));
+  const end = performance.now() + 2200;
+  (function frame(now) {
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+    for (const p of parts) {
+      p.vy += .25; p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+      ctx.fillStyle = p.color; ctx.fillRect(-p.r / 2, -p.r / 4, p.r, p.r / 2); ctx.restore();
+    }
+    if (now < end) requestAnimationFrame(frame);
+    else { ctx.setTransform(1, 0, 0, 1, 0, 0); c.classList.add("hidden"); }
+  })(performance.now());
+}
+
+let toastTimer;
+function toast(msg) {
+  const t = $("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove("show"), 1800);
+}
+
+$("shuffleBtn").onclick = () => { state.order = shuffled(state.order); persist(); render(); };
+$("clearBtn").onclick = () => { selected = []; render(); };
+$("submitBtn").onclick = submit;
+$("hintBtn").onclick = useHint;
+$("shareBtn").onclick = share;
+$("practiceBtn").onclick = startPractice;
+$("todayBtn").onclick = startDaily;
+$("helpBtn").onclick = () => $("help").showModal();
+$("statsBtn").onclick = openStats;
+$("resultStatsBtn").onclick = openStats;
+$("archiveBtn").onclick = openArchive;
+$("settingsBtn").onclick = () => $("settingsDlg").showModal();
+
+startDaily();
+if (!load("seenHelp", false)) { $("help").showModal(); save("seenHelp", true); }
+</script>
+</body>
+</html>
