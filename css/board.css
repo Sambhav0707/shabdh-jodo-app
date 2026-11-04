@@ -1,0 +1,61 @@
+/* Board, word tiles, solved rows and their animations. */
+.board { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; padding-bottom: 8px; }
+.board.loading { min-height: 240px; place-items: center; color: var(--muted); }
+.tile {
+  --rx: 0deg; --ry: 0deg; --z: 0px; --ty: 0px; --mx: 50%; --my: 20%;
+  position: relative; aspect-ratio: 1.35; border: none; border-radius: 12px; cursor: pointer; padding: 4px;
+  background: linear-gradient(165deg, var(--tile-hi), var(--tile)); color: var(--fg);
+  font-weight: 700; font-size: clamp(0.95rem, 4.2vw, 1.25rem); line-height: 1.15; overflow-wrap: normal;
+  box-shadow: var(--sh-rest); text-shadow: var(--text-depth);
+  transform: perspective(520px) translateY(var(--ty)) translateZ(var(--z)) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform .16s ease-out, box-shadow .16s ease-out, background .2s;
+  touch-action: manipulation;
+}
+.tile::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .2s;
+  background:
+    radial-gradient(circle at var(--mx) var(--my), rgba(255,255,255,.5), transparent 58%),
+    linear-gradient(105deg, transparent calc(var(--mx) - 22%), rgba(255,255,255,.34) var(--mx), transparent calc(var(--mx) + 22%));
+}
+.tile.tilt::after { opacity: 1; }
+.tile.long { font-size: clamp(0.8rem, 3.4vw, 1.05rem); }
+.tile.xlong { font-size: clamp(0.7rem, 2.9vw, 0.92rem); }
+.tile:active { --ty: 4px; --z: 0px; box-shadow: var(--sh-press); }
+.tile.sel {
+  --ty: -6px; --z: 28px; color: var(--tile-sel-fg);
+  background: linear-gradient(165deg, var(--sel-a), var(--sel-b)); box-shadow: var(--sh-sel);
+}
+.tile.hint { outline: 3px solid var(--hint); outline-offset: -3px; }
+.tile.pop { animation: flip .55s cubic-bezier(.3,.7,.3,1); }
+@keyframes flip {
+  0% { transform: perspective(520px) rotateY(0deg); }
+  45% { transform: perspective(520px) translateY(-10px) translateZ(70px) rotateY(180deg) scale(1.08); }
+  100% { transform: perspective(520px) translateY(var(--ty)) translateZ(var(--z)) rotateY(360deg); }
+}
+.tile.deal { animation: deal .6s cubic-bezier(.2,.8,.25,1) both; animation-delay: calc(var(--i) * 40ms); }
+@keyframes deal {
+  from { opacity: 0; transform: perspective(520px) translateY(30px) translateZ(-80px) rotateX(-75deg); }
+  to { opacity: 1; transform: perspective(520px); }
+}
+.tile.hop { animation: hop .4s ease both; }
+@keyframes hop {
+  0%, 100% { transform: perspective(520px) translateY(var(--ty)) translateZ(var(--z)); }
+  50% { transform: perspective(520px) translateY(-18px) translateZ(70px) rotateX(-12deg); }
+}
+.solved-row {
+  grid-column: 1 / -1; border-radius: 12px; padding: 10px; text-align: center; color: #1f1b16;
+  min-height: 72px; display: flex; flex-direction: column; justify-content: center; transform-origin: 50% 0;
+  box-shadow: 0 4px 0 rgba(0,0,0,.2), 0 12px 20px -8px var(--shadow);
+  background-image: linear-gradient(170deg, rgba(255,255,255,.35), transparent 60%);
+}
+.solved-row.fresh { animation: slide .55s cubic-bezier(.2,.8,.25,1); }
+.solved-row strong { font-size: 1.1rem; }
+@keyframes slide { from { transform: perspective(700px) rotateX(-80deg) scale(.96); opacity: 0; } to { transform: perspective(700px) rotateX(0) scale(1); opacity: 1; } }
+.lv0 { background-color: var(--lv0); } .lv1 { background-color: var(--lv1); }
+.lv2 { background-color: var(--lv2); } .lv3 { background-color: var(--lv3); }
+.tile.shake { animation: shake .4s; }
+@keyframes shake {
+  0%, 100% { transform: perspective(520px) translateY(var(--ty)) translateZ(var(--z)) rotateY(0); }
+  25% { transform: perspective(520px) translateY(var(--ty)) translateZ(var(--z)) translateX(-8px) rotateY(-14deg); }
+  75% { transform: perspective(520px) translateY(var(--ty)) translateZ(var(--z)) translateX(8px) rotateY(14deg); }
+}

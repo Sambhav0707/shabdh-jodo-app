@@ -1,0 +1,23 @@
+/* Layout for different screen sizes, and reduced motion. */
+@media (min-width: 700px) {
+  main { max-width: 640px; }
+  .board { gap: 14px; }
+  .tile { font-size: clamp(1.1rem, 2.4vw, 1.5rem); }
+  .tile.long { font-size: clamp(0.95rem, 2vw, 1.25rem); }
+  .tile.xlong { font-size: clamp(0.85rem, 1.7vw, 1.05rem); }
+}
+@media (min-width: 1100px) { main { max-width: 720px; } }
+@media (max-height: 560px) and (orientation: landscape) {
+  main { max-width: 760px; }
+  .tile { aspect-ratio: 2.2; }
+  .mistakes { margin: 10px 0; }
+  .sub { margin: 6px 0 10px; }
+}
+@media (max-width: 360px) {
+  .board { gap: 6px; }
+  .icon-btn { width: 34px; }
+  .btn { padding: 9px 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0ms !important; transition-duration: .01ms !important; }
+}

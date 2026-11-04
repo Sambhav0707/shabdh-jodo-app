@@ -1,0 +1,25 @@
+/* Mistake dots, buttons, toast and result panel. */
+.mistakes { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 18px 0; color: var(--muted); }
+#dots { display: flex; gap: 6px; }
+.dot { display: inline-block; width: 14px; height: 14px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, var(--sel-a), var(--sel-b)); box-shadow: 0 2px 0 var(--edge-sel); transition: background .3s, transform .3s, box-shadow .3s; }
+.dot.used { background: var(--line); box-shadow: none; transform: scale(.7) translateY(2px); }
+.controls { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.btn {
+  border: 1px solid var(--btn-border); background: var(--panel); color: var(--fg); border-radius: 999px;
+  min-height: 44px; padding: 9px 18px; font-weight: 600; font-size: 1rem; cursor: pointer;
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 3px 0 var(--btn-border); transition: transform .1s, box-shadow .1s;
+}
+.btn:active:not(:disabled) { transform: translateY(3px); box-shadow: 0 0 0 var(--btn-border); }
+.btn.primary { background: var(--fg); color: var(--bg); }
+.btn:disabled { opacity: .4; cursor: default; box-shadow: none; }
+.toast {
+  position: fixed; top: max(18px, env(safe-area-inset-top)); left: 50%; transform: translateX(-50%); background: var(--toast-bg); color: var(--toast-fg);
+  padding: 8px 16px; border-radius: 10px; font-weight: 600; opacity: 0; pointer-events: none; transition: opacity .2s; z-index: 30;
+  max-width: calc(100% - 32px); text-align: center; box-shadow: 0 10px 24px -8px var(--shadow);
+}
+.toast.show { opacity: 1; }
+.result { text-align: center; margin-top: 18px; }
+.result h2 { margin: 0 0 4px; }
+.grid-emoji { font-size: 1.4rem; line-height: 1.25; margin: 8px 0; white-space: pre; }
+.muted { color: var(--muted); }

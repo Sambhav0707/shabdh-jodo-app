@@ -1,0 +1,31 @@
+/* Colour, shadow and font tokens for light and dark themes. */
+:root {
+  --bg: #e8e6f4; --bg-glow: #fff3d6; --fg: #1c1936; --muted: #5f5a7a; --panel: rgba(255,255,255,.6); --line: #cdc8e4;
+  --tile: #f1effa; --tile-hi: #ffffff; --edge: #b4aed3; --shadow: rgba(46,34,110,.38);
+  --sel-a: #ffd95e; --sel-b: #ffa928; --tile-sel-fg: #2b1c00; --edge-sel: #b66f08;
+  --btn-border: #1c1936; --card: #f7f6fd; --hint: #e0541f;
+  --lv0: #f6d860; --lv1: #9fcb6b; --lv2: #9cb9f0; --lv3: #c08ad6;
+  --toast-bg: #1c1936; --toast-fg: #fff; --bar: #7f78a6;
+  --font: "Mukta", "Noto Sans Devanagari", system-ui, sans-serif;
+  --text-depth: 0 1px 0 rgba(255,255,255,.7);
+  --sh-rest: inset 0 1px 0 rgba(255,255,255,.65), 0 1px 0 var(--edge), 0 2px 0 var(--edge), 0 3px 0 var(--edge), 0 4px 0 var(--edge), 0 5px 0 var(--edge), 0 6px 0 var(--edge), 0 14px 20px -6px var(--shadow);
+  --sh-press: inset 0 1px 0 rgba(255,255,255,.4), 0 1px 0 var(--edge), 0 2px 0 var(--edge), 0 5px 8px -3px var(--shadow);
+  --sh-sel: inset 0 1px 0 rgba(255,255,255,.7), 0 1px 0 var(--edge-sel), 0 2px 0 var(--edge-sel), 0 3px 0 var(--edge-sel), 0 4px 0 var(--edge-sel), 0 5px 0 var(--edge-sel), 0 6px 0 var(--edge-sel), 0 20px 28px -6px rgba(255,150,20,.55);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --text-depth: 0 2px 3px rgba(0,0,0,.45); --bg: #0f0d22; --bg-glow: #2a2060; --fg: #efeefb; --muted: #a29fc4; --panel: rgba(36,31,84,.6); --line: #342f66;
+    --tile: #2c2858; --tile-hi: #3b3675; --edge: #130f2c; --shadow: rgba(0,0,0,.7);
+    --edge-sel: #9a5f08; --btn-border: #efeefb; --card: #1a1736; --hint: #ff8a57;
+    --toast-bg: #efeefb; --toast-fg: #0f0d22; --bar: #6f68a3;
+  }
+}
+:root[data-theme="dark"] {
+  --text-depth: 0 2px 3px rgba(0,0,0,.45); --bg: #0f0d22; --bg-glow: #2a2060; --fg: #efeefb; --muted: #a29fc4; --panel: rgba(36,31,84,.6); --line: #342f66;
+  --tile: #2c2858; --tile-hi: #3b3675; --edge: #130f2c; --shadow: rgba(0,0,0,.7);
+  --edge-sel: #9a5f08; --btn-border: #efeefb; --card: #1a1736; --hint: #ff8a57;
+  --toast-bg: #efeefb; --toast-fg: #0f0d22; --bar: #6f68a3;
+}
+:root[lang="kn"] { --font: "Noto Sans Kannada", "Mukta", system-ui, sans-serif; }
+:root[lang="te"] { --font: "Noto Sans Telugu", "Mukta", system-ui, sans-serif; }
+:root[lang="ta"] { --font: "Noto Sans Tamil", "Mukta", system-ui, sans-serif; }

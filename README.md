@@ -27,7 +27,16 @@ npx serve .
 ## Project layout
 
 ```
-index.html                 the whole game (HTML, CSS, JS, all interface text)
+index.html                 page markup only
+css/                       styles: tokens (themes), base, header, board (tiles), controls, dialogs, overlays, responsive
+js/                        plain scripts loaded in order from index.html (no build step, works from file://)
+  i18n/                      languages.js, strings.js (all interface text)
+  core/                      constants, utils, storage, state
+  data/                      puzzle and font loading
+  game/                      puzzle, actions (submit, hint, finish), timer
+  ui/                        render, tilt, fit, language, dialogs, settings
+  fx/                        sound, confetti, toast, backdrop (Three.js)
+  main.js                    button wiring and startup
 puzzles/<lang>.js          GENERATED puzzle lists, loaded on demand
 tools/
   build-puzzles.mjs        validates the banks and builds puzzles/*.js

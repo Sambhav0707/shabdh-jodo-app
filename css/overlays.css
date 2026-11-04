@@ -1,0 +1,3 @@
+/* Confetti layer and the hidden utility. */
+#confetti { position: fixed; inset: 0; pointer-events: none; z-index: 20; }
+.hidden { display: none !important; }

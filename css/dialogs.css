@@ -1,0 +1,40 @@
+/* Dialogs and their contents. */
+dialog {
+  border: none; border-radius: 18px; background: var(--card); color: var(--fg);
+  max-width: 440px; width: calc(100% - 32px); max-height: calc(100% - 48px); padding: 20px;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,.6);
+}
+dialog[open] { animation: dlg .3s cubic-bezier(.2,.8,.25,1); }
+@keyframes dlg { from { opacity: 0; transform: perspective(800px) translateY(20px) rotateX(-12deg); } to { opacity: 1; transform: none; } }
+dialog::backdrop { background: rgba(10,8,30,.55); backdrop-filter: blur(4px); }
+dialog h2 { margin-top: 0; }
+dialog ul { padding-left: 20px; }
+.dlg-head { display: flex; justify-content: space-between; align-items: center; }
+.dlg-head h2 { margin: 0; }
+.swatches { display: flex; gap: 6px; margin: 6px 0; }
+.swatches span { flex: 1; padding: 4px; border-radius: 8px; text-align: center; color: #1f1b16; font-size: .85rem; }
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 14px 0; text-align: center; }
+.stats b { display: block; font-size: 1.6rem; line-height: 1.1; }
+.stats small { color: var(--muted); }
+.dist { display: grid; grid-template-columns: auto 1fr; gap: 6px 8px; align-items: center; }
+.dist .bar { background: var(--bar); color: #fff; border-radius: 6px; padding: 0 6px; min-width: 22px; text-align: right; font-weight: 600; }
+.dist .bar.cur { background: #4f8a3a; }
+.archive { display: grid; grid-template-columns: repeat(auto-fill, minmax(52px, 1fr)); gap: 6px; margin-top: 12px; }
+.archive button {
+  border: none; border-radius: 10px; background: var(--tile); color: var(--fg); padding: 8px 0 6px;
+  font-weight: 600; font-size: .95rem; cursor: pointer; line-height: 1.1; box-shadow: 0 2px 0 var(--edge);
+}
+.archive button small { display: block; font-size: .8rem; }
+.archive button.won { background: var(--lv1); color: #1f1b16; }
+.archive button.lost { background: #e9a39b; color: #1f1b16; }
+.archive button.today { outline: 2px solid var(--fg); }
+.langs { display: grid; gap: 8px; margin-top: 12px; }
+.langs button {
+  display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--line); border-radius: 12px;
+  background: var(--bg); color: var(--fg); padding: 12px 14px; font-size: 1.1rem; font-weight: 600; cursor: pointer;
+}
+.langs button small { color: var(--muted); font-weight: 400; font-family: "Mukta", sans-serif; }
+.langs button.cur { border-color: var(--fg); border-width: 2px; }
+.setting { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); gap: 12px; }
+.setting select, .setting input { font: inherit; }
+select { background: var(--bg); color: var(--fg); border: 1px solid var(--btn-border); border-radius: 8px; padding: 4px 8px; }
