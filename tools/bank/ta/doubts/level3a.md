@@ -1,0 +1,6 @@
+- Many entries are classical/lexicon words (e.g. அருக்கன், இடங்கர், வலவன், இசை under புகழ்); verify in a Tamil lexicon.
+- Polysemy groups ("'X' என்ற சொல்லின் பொருள்கள்") list gloss-words, not exact lexicon wording; weaker ones: பூ/தாது/கனம்/சுடர்/சிந்து/கறி/கரு.
+- Some word duplicates across groups on purpose (e.g. வாயு, கீதம், பீடம், நாள்); fine as different heads, but check same-day clashes.
+- Ambiguous: தன்மைப் பெயர்ச்சொற்கள் vs. other pronoun groups (language writer overlap possible).
+- Chola/Pandya/Chera epithets (செம்பியன், கூடலர்கோன், குடக்கோ) are standard but obscure.
+- Collision: another writer's (3b) compound lines were written into my file twice; I moved them out (saved in scratchpad misplaced_3b_chunk6.txt, misplaced2.txt).

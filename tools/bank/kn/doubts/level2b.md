@@ -1,0 +1,26 @@
+# level2b doubts (KN, hard culture)
+
+- Kodava festival/dish spellings: ಕೈಲ್ ಪೊಳ್ದ್, ಕಕ್ಕಡ ಪದಿನೆಟ್ಟ್, ಕಡುಂಬುಟ್ಟು, ನೂಲ್ಪುಟ್ಟು; Kodava dress terms ಕುಪ್ಯ, ಚೇಲೆ, ಪೀಚೆಕತ್ತಿ, ಮಂಡೆತುಣಿ, ಒಡಿಕತ್ತಿ
+- Tulu month names/spellings (ಪಗ್ಗು, ಬೇಸ, ಕಾರ್ತೆಲ್, ಆಟಿ, ಸೋಣ, ಬೊಂತೆಲ್)
+- Tulu paddana heroes: ಅಗೋಳಿ ಮಂಜಣ್ಣ, ಕಾಂತಾಬಾರೆ, ಬೂದಾಬಾರೆ; daivas ಕಲ್ಲುರ್ಟಿ, ಜುಮಾದಿ, ಬಬ್ಬರ್ಯ
+- Yakshagana styles ಮೂಡಲಪಾಯ / ಘಟ್ಟದಕೋರೆ grouped with ತೆಂಕು/ಬಡಗುತಿಟ್ಟು; costume term ಕೇದಗೆ ಮುಂದಲೆ, ಎದೆಕಟ್ಟು
+- Mela towns (ಇಡಗುಂಜಿ, ಪೆರ್ಡೂರು, ಸಾಲಿಗ್ರಾಮ, ಧರ್ಮಸ್ಥಳ, ಕಟೀಲು, ಮಂದಾರ್ತಿ): all currently active?
+- Upapandavas: ಪ್ರತಿವಿಂಧ್ಯ, ಸುತಸೋಮ spellings; Agnatavasa names ಗ್ರಂಥಿಕ (Nakula), ತಂತಿಪಾಲ (Sahadeva)
+- Ashtamahishi list varies by source (ಭದ್ರೆ, ಮಿತ್ರವಿಂದೆ)
+- Ashta-diggaja and Ashta-vasu lists vary by Purana
+- Sankha names: ಸುಘೋಷ (Nakula), ಮಣಿಪುಷ್ಪಕ (Sahadeva), ಪೌಂಡ್ರ (Bhima)
+- Kuvempu, Bendre, Adiga, KSN, Masti, Triveni and TaRaSu work lists: check each title's author (esp. ತ್ರಿವೇಣಿ ಕೀಲುಗೊಂಬೆ, ತರಾಸು ಚಂದವಳ್ಳಿಯ ತೋಟ)
+- Lankesh works: ನೀಲು, ಸಂಕ್ರಾಂತಿ (play), ಅಕ್ಕ
+- ಕೈಲಾಸಂ group removed; ಕನ್ನಡ ನಾಟಕಕಾರರು includes ಶ್ರೀರಂಗ, ಕೈಲಾಸಂ
+- Autobiographies: ಸುರಗಿ (Ananthamurthy), ಭಾವ (Masti)
+- National-award films: ತಾಯಿ ಸಾಹೇಬ, ದ್ವೀಪ, ಹಸೀನಾ (Swarna Kamal/regional best?)
+- Puttanna films list; Rajkumar devotional films ಶ್ರೀನಿವಾಸ ಕಲ್ಯಾಣ
+- Karnataka Ratna recipients list (ದೇವಿ ಶೆಟ್ಟಿ, ನಿಜಲಿಂಗಪ್ಪ)
+- Foreign Kannada scholars: ರೀವ್, ಗ್ಯಾರೆಟ್; Portuguese-origin words (ಬಟಾಟೆ, ಅಲಮಾರು, ಪಾದ್ರಿ)
+- Grammar: the 6 linga types (ಸ್ತ್ರೀನಪುಂಸಕಲಿಂಗ, ಸರ್ವಲಿಂಗ); avyaya type names; ವಿಭಕ್ತಿ ಪ್ರತ್ಯಯ set
+- Kanaka Dasa works ನೃಸಿಂಹಸ್ತವ; dasa genres ದಂಡಕ
+- Ambari elephants order: ದ್ರೋಣ, ಬಲರಾಮ, ಅರ್ಜುನ, ಅಭಿಮನ್ಯು
+- Kirana gharana: ಫಿರೋಜ್ ದಸ್ತೂರ್, ಬಸವರಾಜ ರಾಜಗುರು
+- Folk epic ಕುಮಾರರಾಮನ ಕಾವ್ಯ; deity ಸಿದ್ದಪ್ಪಾಜಿ
+- Mangalore seafood names ಅಂಜಲ್, ಮಾಂಜಿ, ಕಾನೆ (local spellings)
+- Samvatsara spellings (ಪ್ರಮೋದೂತ, ಪ್ರಮಾದೀಚ, ವಿರೋಧಿಕೃತ್)

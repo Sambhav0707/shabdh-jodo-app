@@ -1,0 +1,15 @@
+# level3b doubts (native-speaker review)
+- Many synonym groups mix tatsam/Urdu/colloquial words; weakest: आम (अमृतफल), अप्सरा, बुद्ध (सिद्धार्थ/गौतम are names), जासूस (चर, भेदी), बढ़ई (तक्षक), पंखे (चामर), हल्के-type adjectives.
+- Rare Sanskrit synonyms to verify: उलूक/दिवांध, महाग्रीव/लंबोष्ठ, दृढ़पृष्ठ, उपधान/सिरहाना, अवश्याय, नीहार, कुलीर, क्षौरिक, खेवइया, निःश्रेणी, पैड़ी, पिचुमर्द, हरिवाहन, दंडनायक, वाहिनीपति.
+- Near-duplicate overlap with level3.mjs words: काम/देश/शराब/दर्द/अद्भुत/ऋषि synonym groups share 2-3 words with older groups.
+- 'कनक' के अर्थ: पलाश doubtful. 'हस्त': "मुट्ठी भर" doubtful. 'सोम': dropped weak ones.
+- 'लाल' के अर्थ (माणिक), 'आम' (मामूली) are loose senses.
+- Compound groups to verify each combination: ___ + ज (तनु->तनुज), ___ + कर (दिवा), ___ + धर (हल->हलधर), ___ + मंद (फ़िक्र), ___ + साज़, ख़ुद + ___ (परस्त), अंतर् + ___ (राष्ट्रीय is a full word), सर + ___ (कार, गना), पूर्व + ___ (पक्ष, कथन), सत्य + युग, सप्त + सिंधु, भू + मंडल.
+- Sandhi-based halves (___ + ईश, ___ + इंद्र, ___ + आनन, सम्, अधि + वेशन) change spelling when joined; check fairness.
+- Idioms to verify: 'पानी भरना/उतरना', 'चेहरा तमतमाना/पीला पड़ना', 'दिमाग़ घूमना/चढ़ना', 'ख़ाक डालना/होना', 'कलेजा निकालना', 'दाँत काटी रोटी' (is a fixed phrase).
+- तत्सम/तद्भव groups: could be argued either way; मस्तक/माथा pair. देशज not attempted.
+- फ़्रांसीसी शब्द (कारतूस, कूपन, रेस्तराँ, कर्फ़्यू, बुफ़े) and 'अंग्रेज़ी शब्दकोश में पहुँचे' (बंगला, अवतार) - check etymology.
+- Hidden-word groups: तोताचश्म (तोता), चीलगाड़ी, सालगिरह (साल tree), यहूदी omitted; आपदा/वहम/तुमड़ी/उसूल/हमला hide pronouns.
+- 'बिंदी हटाने पर नया शब्द': रंग->रग, मंद->मद, पंथ->पथ ok; verify.
+- 'गूँजते शब्द-जोड़े', 'बारिश की आवाज़ के शब्द' (छमाछम) are informal.
+- नवदुर्गा/वेदांग/सिद्धियाँ are religion_myth; may overlap level2.

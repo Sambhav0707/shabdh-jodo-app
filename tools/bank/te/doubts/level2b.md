@@ -1,0 +1,31 @@
+# level2b doubts (Telugu, hard culture)
+
+- Telugu year sequence: groups slice the 60-year cycle in order (Ugadi 2014 = జయ, 2025 = విశ్వావసు, 2026 = పరాభవ). Verify slicing and spellings (విరోధికృతు, ప్రమాదీచ, పరీధావి).
+- తెలుగు నేల శక్తిపీఠాలు: శ్రీశైలం, ద్రాక్షారామం, పిఠాపురం, అలంపురం (per the 18-peetha list).
+- పంచారామాలు: సామర్లకోట (కుమారారామం), భీమవరం (సోమారామం), పాలకొల్లు (క్షీరారామం).
+- రామదాసు కీర్తనలు: "తారక మంత్రము", "అదిగో భద్రాద్రి" attributed to Ramadasu.
+- తెలుగు జానపద వాద్యాలు: "బుర్ర" (burrakatha gourd tambura) may be weak.
+- రాయలసీమ group: బొరుగులు is generic puffed rice; కొర్ర అన్నం regional claim.
+- గోదావరి group: కాకినాడ కాజా is East Godavari, so OK; పులస పులుసు spelling.
+- Film lists: ఎన్టీఆర్ స్వీయ దర్శకత్వం (సీతారామ కళ్యాణం 1961, శ్రీరామ పట్టాభిషేకం); సావిత్రి నటించినవి (నవరాత్రి, రక్త సంబంధం); కోడి రామకృష్ణ (దేవి, దేవీపుత్రుడు, ముద్దుల మావయ్య); రాఘవేంద్రరావు (కొండవీటి సింహం, అల్లరి ప్రియుడు).
+- ఎస్వీ రంగారావు పాత్రలు: రావణుడు (సంపూర్ణ రామాయణం), హిరణ్యకశిపుడు (భక్త ప్రహ్లాద 1967).
+- సినిమా స్టూడియోలు: "విజయ" is Vijaya Vauhini (Chennai); "ప్రసాద్" is Prasad Studios.
+- రంగస్థల నటులు: బందా కనకలింగేశ్వరరావు, అద్దంకి శ్రీరామమూర్తి (verify).
+- శ్రీనాథ కృతులు: క్రీడాభిరామం left out (disputed); శివరాత్రి మాహాత్మ్యం attribution.
+- శతక మకుటాలు: "కరుణాపయోనిధీ" = దాశరథీ శతకం; దాశరథీ శతకం is attributed to రామదాసు (traditional).
+- భావకవులు: బసవరాజు అప్పారావు, అడవి బాపిరాజు, listed by surname or short name.
+- హాస్య రచయితలు: పానుగంటి (సాక్షి వ్యాసాలు).
+- కూచిపూడి నృత్య రూపకాలు: ఉషాపరిణయం, శశిరేఖా పరిణయం as Kuchipudi yakshaganas.
+- ద్వాదశ ఆదిత్యులు: name lists vary by Purana.
+- శివగణ ప్రముఖులు: చండీశ్వరుడు, నందీశ్వరుడు.
+- ఆళ్వారులు: Telugu renderings (తిరుప్పాణి, తిరుమంగై).
+- పాత తూకపు కొలతలు: కండి (candy) as a weight; వీసె spelling.
+- పాత నాణేలు: కానీ/దమ్మిడీ spellings.
+- పంచముఖ హనుమ: "వానరముఖం" used instead of ఆంజనేయ.
+- ప్రసిద్ధ సాహితీ బిరుదులు: కవికోకిల (దువ్వూరి రామిరెడ్డి, and also used for జాషువా).
+- తెలుగు జంట కవులు: "పింగళి కాటూరి", "పార్వతీశ కవులు" as tile forms.
+- గ్రామదేవతలు/ఉత్తరాంధ్ర: నూకాంబిక (అనకాపల్లి), పోలమాంబ (శంబర).
+- తెలంగాణ జానపద గాయకులు: సుద్దాల హనుమంతు, విమలక్క.
+- రథసప్తమి: "చిక్కుడు ఆకులు" (prasadam is served on them).
+- జ్ఞానపీఠ పురస్కార గ్రహీతలు: mixes Telugu and other-language winners (కువెంపు, తకళి, మహాదేవి వర్మ).
+- Overlapping words across groups (e.g. పోకిరి, ఇడియట్, టెంపర్, శ్రీశైలం) are used on purpose as red herrings; dedupe if the puzzle builder needs it.

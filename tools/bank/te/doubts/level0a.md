@@ -1,0 +1,8 @@
+- Many compound dish tiles (e.g. మామిడికాయ పచ్చడి, ఆలూ బజ్జీ) are descriptive 2-word phrases; check naturalness.
+- Fish names: పండుగప్ప, రవ్వ, వంజరం, మృగాల, జెల్ల, కొర్రమీను spellings/regional use.
+- Mango/banana varieties (చిన్నరసం, పెద్దరసం, రస్తాళి, అమృతపాణి) regional.
+- "ఇంట్లో పెంచే పక్షులు" overlaps with other pet-bird groups; "కానరీ", "లవ్ బర్డ్స్" loanword spelling.
+- Property-style groups (e.g. "కాకి గురించి", "ఒంటె లక్షణాలు") are looser than category groups; consider dropping.
+- "పాకంతో చేసే తీపులు", "పలుచని ఆహారాలు", "తుట్టె నుండి వచ్చేవి" names are my own coinage.
+- Synonym groups (నేత్ర/కర/తరు/పూల పర్యాయ పదాలు) use Sanskrit-origin words; names were shortened to avoid containing words.
+- Overlap between groups (e.g. కొబ్బరి, పెరుగు appear in several) is intentional but may cause ambiguity.

@@ -1,0 +1,14 @@
+- Sangam kings (Udiyanjeral, Imayavarampan, Kokkothai Marban, Ilanjetcenni): confirm all are real Sangam-era rulers.
+- Mahendravarman titles (Sankeernajathi, Vichitrachitta etc.) and cave temple list (Mandagapattu, Pallavaram, Vallam, Seeyamangalam, Mahendravadi, Thalavanur).
+- Ashtadiggaja group uses short names (Pedanna, Timmana, Dhurjati, Mallana, Surana, Ramabhadra) - verify.
+- Thanjavur Nayak/Maratha rulers (Sevappa, Achyutappa, Raghunatha, Vijayaraghava; Ekoji, Tulajaji, Serfoji, Shahuji, Pratap Singh).
+- Palayakkarar group: Gopala Nayakar (Virupakshi), Oomaithurai, Dheeran Chinnamalai.
+- Velu Nachiyar companions: Udaiyaal, Kuyili, Maruthu brothers, Hyder Ali.
+- Nilgiri mountain railway stations (Adderley, Wellington) and Nilgiri tribes list.
+- Tamil Nadu graphite/magnesite mineral list; Muppandal etc. wind-farm towns.
+- Cyclone names hitting TN (Okhi, Vardah, Gaja, Nivar, Michaung, Thane).
+- Nobel list uses single names (Raman, Chandrasekhar, Satyarthi).
+- Mohs hardness group (orthoclase, topaz, quartz, corundum, diamond).
+- IIT cities incl. Guwahati; zone HQs (Hubli SWR, Jabalpur WCR).
+- Newly created districts list (Mayiladuthurai, Tenkasi, Kallakurichi, Chengalpattu, Tirupathur, Ranipet).
+- Several Tamil spellings of foreign names (Fohrint, Zloty, Tonle Sap) need native-speaker review.

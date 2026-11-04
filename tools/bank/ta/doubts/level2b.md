@@ -1,0 +1,26 @@
+# level2b doubts (Tamil) - please double-check
+- Ayyappan group: ஹரிவராசனம், பந்தளம், மகரவிளக்கு spellings.
+- Thalam grouping: "பஞ்சபூதத் தலங்கள்" (Kanchipuram, Thiruvanaikka, Thiruvannamalai, Kalahasti, Chidambaram) - correct order of elements not asserted.
+- Nine Durga forms (சைலபுத்ரி...காத்யாயனி) - only first 6 listed, spellings.
+- Avatar group "திருமாலின் தசாவதாரம்" lists மச்சம்/கூர்மம்/வராகம்/நரசிம்மம்/வாமனம்/பரசுராமர் (mixed forms).
+- "திருமாலின் அவதாரங்கள்" mixes Rama/Balarama/Krishna/Kalki (dasavatara variants differ).
+- Sunday-start weekday list uses வெள்ளி but omits சனி (6 of 7 words).
+- Tamil year names (பிரபவ... குரோதி): verify 60-year cycle spellings, esp. பிரமோதூத, பிரஜோத்பத்தி, ஆங்கீரச, சோபகிருது.
+- Kural chapter groups: check exact chapter titles (இனியவை கூறல், பிறனில் விழையாமை, இரவச்சம், இடுக்கண் அழியாமை, புணர்ச்சிமகிழ்தல், கனவுநிலையுரைத்தல்).
+- "நாலடியார்... சமணர் இயற்றிய நூல்கள்": நன்னூல் (Pavananthi, Jain) and யாப்பருங்கலம் (Amithasagarar) fine; சீவகசிந்தாமணி Jain ok.
+- தண்டியலங்கார அணிகள் vs தொல்காப்பிய-based lists; "அணி இலக்கண வகைகள்" spellings.
+- நட்பியல் group (தீ நட்பு, கூடா நட்பு, பழைமை) - check chapter list.
+- Chola-era poets group (ஒட்டக்கூத்தர், புகழேந்தி, செயங்கொண்டார், சேக்கிழார், கம்பர்) - புகழேந்தி era disputed.
+- "சங்கப் பெண்பாற் புலவர்கள்": காவற்பெண்டு, பொன்முடியார் gender/attribution.
+- "குறிஞ்சிப்பாட்டு/கபிலர் பாடிய மலர்கள்": காந்தள், ஆம்பல், அனிச்சம், குவளை, வெட்சி, குறிஞ்சி - verify all are in the 99-flower list.
+- "தல விருட்சங்கள்": கடம்பு (Madurai), தில்லை (Chidambaram), குறும்பலா (Courtallam), வில்வம், வெண்நாவல், புன்னை (Mylapore) - verify each.
+- Sivaji/MGR/Kamal/Rajini/Mani Ratnam/Bharathiraja/Balachander film lists: verify each film belongs to named person (e.g. படகோட்டி, ரிக்ஷாக்காரன் MGR; வாலி is Ajith/Kamal? removed; "செவாலியே படங்கள்" includes பாசமலர், வசந்த மாளிகை).
+- புவிசார் குறியீடு list: கோவை கோரா, மதுரை சுங்குடி, பவானி ஜமுக்காளம், சேலம் வெண்பட்டு, ஆரணி பட்டு - verify GI status.
+- Folk-art groups: மானாட்டம், காளையாட்டம், கரடியாட்டம் exist but naming varies.
+- Chettinad/Madurai food groups: கந்தரப்பம், கவுனி அரிசி, வெள்ளைப் பணியாரம், கறி தோசை regional attribution.
+- பழைய நாணய அலகுகள்: துட்டு, தம்பிடி, பணம் conversion/ordering not asserted.
+- Kizhvaai numerals (முந்திரி, காணி, மா, அரைக்கால், வீசம், கால்) and measures (குறுணி, பதக்கு, மஞ்சாடி, கழஞ்சு) - verify.
+- Tribe groups (பணியர், காடர், குரும்பர், படகர்) - Badagas are a community, not scheduled tribe.
+- Synonym groups: check dictionary support for பணி, அப்பு, நபம், ஒயில், சலதி, அரண்யம், நிருபன்.
+- Jain vows (அஸ்தேயம், அபரிகிரகம்), Tamil Bible names (அந்திரேயா, பிலிப்பு) spelling.
+- Vaishnava guru lineage and six darshanas spellings.

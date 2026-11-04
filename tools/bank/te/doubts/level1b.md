@@ -1,0 +1,9 @@
+- Many groups were generated quickly; a human Telugu review is advised, especially the weaker ones below.
+- Brand/transliterated words (ఎస్బీఐ-type, ఈటీవీ, ఎన్టీవీ, వాట్సాప్, ఇన్స్టాగ్రామ్) may need spelling checks.
+- సాక్షి appears in both court group and newspaper group (cross-group overlap, intentional).
+- Several overlapping categories (తెలుగు పండుగలు / ఉగాది etc.) can make puzzles ambiguous: పండుగలు, రుతు కాలపు పండుగలు.
+- Synonym groups (పర్యాయపదాలు): rarer words like మతంగం, సైంధవం, నగం, అద్రి, వినువీధి, పావకుడు may be too obscure.
+- క్రియలు groups use dictionary stems (నడుచు etc.); modern speakers might prefer -డం forms.
+- Weak/loose groups: వ్యాపార పదాలు, ఫ్యాక్టరీ పదాలు, సినిమా పదాలు, కళాకారులు, పంట కాలాలు (దాళ్వా, యాసంగి).
+- Borderline accuracy: తిథులు list (చవితి also a festival), సుబ్రహ్మణ్యుని పేర్లు (మురుగన్ Tamil), వెంకటేశ్వరుని పేర్లు (బాలాజీ), వాగ్గేయకారులు (ముత్తుస్వామి dropped by length).
+- క్రికెట్ ఫీల్డింగ్ (లెగ్, పాయింట్, గల్లీ) terms are loanwords; మిడాన్ spelling uncertain.

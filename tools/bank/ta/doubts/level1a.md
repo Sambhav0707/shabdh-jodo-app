@@ -1,0 +1,11 @@
+- Tamil Nadu dishes/regional specialities: "குஷ்பு இட்லி", "மதுரை ஜிகர்தண்டா" are colloquial, verify.
+- "சீப்புச் சீடை", "கும்மாயம்", "கவுனி அரிசி" listed under Chettinad sweets; regional attribution uncertain.
+- Animal gender/young names (பறழ், மறி, பிடி, ஏறு, பிணை) are literary; check familiarity for medium level.
+- Synonym groups (கேசம், பன்னகம், உரகம், நபம், அப்பு, வாரி) include rare literary words.
+- "எழுநீர்": none. "அப்பு" for cloud is doubtful; "அந்தரம்" for sky doubtful.
+- Dog breed group "கன்னி/கோம்பை" fine; "ஆலம்பாடி/பர்கூர்" cattle breeds okay.
+- "ஜிலேபி மீன்" is a tilapia colloquial name.
+- "முன்சிறுகுடல்" (duodenum) and "ஹைப்போதலாமஸ்" are loan/technical.
+- "மொலாசஸ்", "ஃபார்மிக் அமிலம்" etc. are loanwords; spelling may vary.
+- Many words repeat across groups (வெந்தயம், தயிர், இரும்பு, காற்று...); dedupe at assembly if needed.
+- "உள்நாக்கு", "அண்ணம்" fine; "நபம்" doubtful.

@@ -1,0 +1,16 @@
+# level2b doubts (verify)
+- Pruned multi-word titles automatically (tile rule); some film groups may overlap (Deewaar/Trishul in Amitabh and Yash Chopra; Fashion/Barfi/Piku/Padmaavat across stars).
+- Sridevi "Mom", Ayushmann "Bala", Vidya "Shakuntala Devi" correct titles; check Rishi Kapoor "Deewana" and "Mulk".
+- Basu Chatterjee "Swami" (1977) and Shyam Benegal "Zubeidaa" okay; Sunny Deol "Betaab", "Ghatak" okay.
+- Rajinikanth "Sivaji", "Muthu", "Padayappa" ok; Kamal "Sadma", "Appu Raja", "Pushpak" ok.
+- Vishal Bhardwaj "Pataakha", "Makdee" ok; Anurag "Ugly", "Gulaal".
+- Chhayavaad group (Prasad, Nirala, Pant, Mahadevi) uses surnames/pen names.
+- Raag timings (Lalit/Ramkali/Ahir Bhairav morning; Marwa/Puriya/Shree evening; Bihag/Bageshri night) check.
+- Ashtavinayak removed; Kumbh/Char Dham overlaps fine.
+- "Karnatak vaadya": Nadaswaram/Mridangam appear in two instrument groups.
+- Mahabharat shankh names (Sughosha=Nakul, Manipushpaka=Sahdev) correct per text; Gandiv group dropped Vijay (Karna).
+- Mirzapur: Sweety, Beena, Golu, Bablu, Guddu correct. Panchayat: Banrakas, Rinki, Prahlad, Vikas.
+- Khichdi, Taarak Mehta, CID team names (Freddy, Tarika, Salunkhe) ok.
+- Kantha/Chikankari etc. in textile groups: Kullu/Himroo in "Bunai" loose.
+- Famous Bengali sweets: Pantua; Odia: Santula; Himachali: Patande.
+- Mughal-e-Azam "Bahar" (Nigar Sultana) ok; Dilip Kumar "Karma", "Saudagar" ok.

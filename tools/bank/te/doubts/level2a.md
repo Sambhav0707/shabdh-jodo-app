@@ -1,0 +1,28 @@
+# level2a doubts (Telugu, level 2 share a)
+
+- Godavari distributaries ("గోదావరి సప్త పాయలు"): lists vary; వైనతేయ vs కౌశిక, తుల్యభాగ naming.
+- Kakatiya-era tanks: బయ్యారం, ఘనపురం attribution to Kakatiyas.
+- Telangana waterfalls: గాయత్రి, సలేశ్వరం placement (Adilabad / Nallamala, Telangana side).
+- AP falls: కటికి (Araku) and ఉబ్బలమడుగు (Tada) spelling.
+- AP new districts (2022): ఏలూరు, బాపట్ల as new; district HQs పాడేరు, పుట్టపర్తి; any later renames (Annamayya HQ, YSR/Kadapa) excluded.
+- "వ్యక్తుల పేర్లున్న ఆంధ్ర జిల్లాలు": అల్లూరి short for Alluri Sitarama Raju district; ఎన్టీఆర్ district.
+- "దైవ నామాలున్న తెలంగాణ జిల్లాలు": రాజన్న (Rajanna Sircilla) as deity name.
+- Telangana state symbols: పాలపిట్ట, జింక, తంగేడు, జమ్మి.
+- Telugu leader titles: ఆంధ్రరత్న (Duggirala), దేశోద్ధారక (Kasinadhuni Nageswara Rao).
+- Nizams list: నిజాం అలీ … ఉస్మాన్ అలీ (Asaf Jah II–VII) spellings.
+- Qutb Shahi: టోలీ మసీదు, హుస్సేన్ సాగర్ as Qutb Shahi-era.
+- Golconda diamonds: రీజెంట్, ఓర్లోవ్, దరియా నూర్ origin.
+- Telugu-origin scientists: సీఆర్ రావు, విశ్వేశ్వరయ్య "Telugu roots" may be contested.
+- Arma Konda (అర్మకొండ) as AP's highest peak.
+- Ashokan edict sites: జౌగడ, ఎర్రగుడి spelling.
+- Telugu train names (గౌతమి, శాతవాహన, నారాయణాద్రి, సింహపురి, ఫలక్నుమా, పద్మావతి) are all real express trains.
+- Hyderabad cricketers: అంబటి రాయుడు, జైసింహా; Andhra cricketers: హనుమ విహారి (played for both), షేక్ రషీద్.
+- Badminton group: సైనా నెహ్వాల్ (Haryana-born, Hyderabad-based), కశ్యప్, సాత్విక్.
+- Telugu chess: హరికృష్ణ, అర్జున్ ఎరిగైసి (Warangal).
+- Athletes: జ్యోతి యర్రాజి; shooters ఈషా సింగ్, గగన్ నారంగ్ (Hyderabad).
+- "తెలంగాణ ఎత్తిపోతల పథకాలు": పాలమూరు (Palamuru-Rangareddy) included.
+- Tropic of Cancer group omits MP/Chhattisgarh by choice (all listed are correct).
+- Telugu element names: తుత్తునాగం = zinc, తగరం = tin.
+- Soils: chose generic Indian soil names; Chelka/Dubba not used.
+- "మడ అడవులు" only 4 items.
+- Some words recur across groups (e.g., కొల్లేరు, శ్రీశైలం, బ్రెజిల్); puzzle builder should avoid picking overlapping groups together.

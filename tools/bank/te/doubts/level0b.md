@@ -1,0 +1,11 @@
+# Doubts (level0b, Telugu)
+- ముక్కెర, బులాకీ, నత్తు (nose ornaments): regional terms, verify.
+- రంధా (carpenter's plane), జంపఖానా, మేదరి: verify spelling.
+- తోడుపెళ్ళికొడుకు, ఇంటాయన, విభుడు, ఇంటావిడ: colloquial/archaic, check.
+- కలుపు తీసేవారు, దుక్కి దున్నేవాడు: multi-word phrasing; may be too long for tiles.
+- Nakshatra groups (ఆరంభ/మధ్య/చివరి నక్షత్రాలు) and తిథులు: maybe harder than level 0.
+- Synonym groups (e.g. జన్మనిచ్చినామెకు పేర్లు): names awkward, check naturalness.
+- Some words repeat across groups (తలంబ్రాలు, పచ్చీసు, తొక్కుడుబిళ్ళ, గచ్చకాయలు); fine unless dedupe wanted.
+- Loanword spellings: స్క్రూడ్రైవర్, ఇన్‌స్టాగ్రామ్, కోల్‌కతా (ZWNJ used).
+- ట్రాపీజ్ కళాకారుడు, తీన్ పత్తి, గాడిద (card game): verify.
+- Cultural placement of several groups (family field) is approximate.

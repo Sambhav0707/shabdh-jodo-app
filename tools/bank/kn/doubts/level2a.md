@@ -1,0 +1,28 @@
+- Hoysala/Kadamba/Ganga/Rashtrakuta king lists: ವೀರಬಲ್ಲಾಳ, ಏಚಲ, ಸಳ, ರಾಚಮಲ್ಲ, ಮಾಧವ, ಶಾಂತಿವರ್ಮ, ಕೃಷ್ಣವರ್ಮ names should be verified as belonging to the stated dynasty.
+- ಮೈಸೂರು ಒಡೆಯರು: "ನಾಲ್ವಡಿ", "ಕಂಠೀರವ" are epithets/given names; check acceptable as ruler names.
+- ಮೈಸೂರು ಯುದ್ಧ group: "ಬೇರ್ಡ್" (Gen. Baird at Seringapatam 1799) check.
+- Taluk lists (all district taluk groups): taluk composition changed after 2018-2020 reorganisations; verify e.g. ಹನೂರು, ಕೂಡ್ಲಿಗಿ, ಮಸ್ಕಿ, ಕಾರಟಗಿ, ಹಾರೋಹಳ್ಳಿ, ಹೆಬ್ರಿ, ಕಾಪು, ಬೈಂದೂರು, ಪೊನ್ನಂಪೇಟೆ.
+- ಅಟ್ಟಾರ ಕಚೇರಿ, ಟಿಪ್ಪು ಅರಮನೆ (Bengaluru landmarks); ಬೆಳ್ಳಂದೂರು/ವರ್ತೂರು/ಮಡಿವಾಳ lakes.
+- Kannada ಚಾಲುಕ್ಯ "ಮಹಾಕೂಟ" listed among Badami/Pattadakal sites; ಮಲೆಗಿತ್ತಿ ಶಿವಾಲಯ in Badami.
+- Aihole temple list: ಹುಚ್ಚಪ್ಪಯ್ಯ ಗುಡಿ, ಮೇಗುತಿ, ರಾವಲಫಡಿ spelling.
+- ಅಶೋಕನ ಶಾಸನ ತಾಣಗಳು: ಕೊಪ್ಪಳ, ನಿಟ್ಟೂರು, ಬ್ರಹ್ಮಗಿರಿ, ಸನ್ನತಿ, ಮಸ್ಕಿ.
+- ಶಾಸನ ತಾಣಗಳು: ಹಲ್ಮಿಡಿ, ತಾಳಗುಂದ.
+- ಕರ್ನಾಟಕದ ಮೂಲ/ಬೆಳೆ ಜಿಲ್ಲೆಗಳು: ಕಾಫಿ group includes ವಯನಾಡು (Kerala) by design.
+- Rivers: ಸೌಪರ್ಣಿಕಾ, ಗಂಗಾವಳಿ, ಅಘನಾಶಿನಿ flow west; ಕುಮುದ್ವತಿ, ವರದಾ in Shivamogga/Haveri.
+- Waterfalls: ಕಲ್ಹತ್ತಿ, ಸಾತೋಡಿ, ಇರ್ಪು, ಬರ್ಕಣ, ಕೂಡ್ಲು ತೀರ್ಥ; ಜೋಗದ ನಾಲ್ಕು ಧಾರೆ ರಾಜ/ರಾಣಿ/ರೋರರ್/ರಾಕೆಟ್.
+- ಕರ್ನಾಟಕದ ರಾಷ್ಟ್ರೀಯ ಉದ್ಯಾನ: ಅಣಶಿ; ಹುಲಿ ಮೀಸಲು: ಕಾಳಿ (Dandeli-Anshi), ಬಿಳಿಗಿರಿರಂಗನಬೆಟ್ಟ.
+- ಸಹ್ಯಾದ್ರಿ/ಪಶ್ಚಿಮ ಘಟ್ಟ ಸಾಲುಗಳು: ಪಳನಿ, ಏಲಕ್ಕಿ ಬೆಟ್ಟ (technically spurs).
+- State-wise city lists (ಬಂಗಾಳ: ಖರಗ್‌ಪುರ etc.); ಕೇಂದ್ರಾಡಳಿತ ಪ್ರದೇಶಗಳು: ದೆಹಲಿ counted UT/NCT.
+- ತ್ರಿವರ್ಣ ಧ್ವಜ ಬಣ್ಣಗಳಲ್ಲಿ ನೀಲಿ (Ashoka Chakra).
+- ಸಿಕ್ಖರ/ಜೈನ ಪವಿತ್ರ ಸ್ಥಳಗಳು: ರಣಕಪುರ, ದಿಲ್ವಾಡಾ, ಗಿರ್ನಾರ್.
+- Cricket: ಚೇತನ್ ಚೌಹಾಣ್/ಶ್ರೀಕಾಂತ್ as Test openers; ವಿಶ್ವನಾಥ್ & ಪ್ರಸನ್ನ Karnataka players OK.
+- Sports: ಒಲಿಂಪಿಕ್ಸ್ ಪದಕ ವಿಜೇತರು list (Mary Kom, Ravi Dahiya, Mirabai Chanu) should be verified; ಹರಿಕೃಷ್ಣ, ಕೋನೇರು ಹಂಪಿ chess.
+- ಸ್ಕ್ಯಾಂಡಿನೇವಿಯಾ includes ಫಿನ್ಲ್ಯಾಂಡ್/ಐಸ್‌ಲ್ಯಾಂಡ್ (Nordic, not strictly Scandinavian).
+- ಎರಡು ಖಂಡಗಳಲ್ಲಿ ಹರಡಿದ ದೇಶಗಳು: ಕಜಕಸ್ತಾನ.
+- ಜಿ-ಏಳು/ಭದ್ರತಾ ಮಂಡಳಿ ವರ್ತಮಾನ ಸದಸ್ಯತ್ವ.
+- ಚಿಚೆನ್ ಇಟ್ಜಾ etc. = New 7 Wonders (2007), Great Wall included.
+- Science: ಕಿಲಿಮಂಜಾರೋ listed as volcano; ಜೀವಕೋಶ/ಅಂಗರಚನೆ Kannada terms (ಭೂಪ್ರಾವರಣ, ಭೂಕವಚ, ಕೃಷ್ಣಪಟಲ, ಸುತ್ತಿಗೆ).
+- ವಾತಾವರಣ/ಶಿಲೆ names transliterated; ಬೆಂಗಳೂರು ಮೂಲದ ಸಂಸ್ಥೆಗಳು: ಬೆಲ್, ಬಯೋಕಾನ್.
+- ಇತ್ತೀಚಿಗೆ ರಚಿತವಾದ ರಾಜ್ಯಗಳು; ಹೊಸ ಸಹಸ್ರಮಾನ/೯೦ರ ದಶಕದ ಜಿಲ್ಲೆ ರಚನೆ (Vijayanagara 2021).
+- ಮೈಸೂರು ದಿವಾನರು group; ಏಕೀಕರಣ ಹೋರಾಟಗಾರರು (ಕೌಜಲಗಿ ಶ್ರೀನಿವಾಸರಾಯ).
+- ಧೋಂಡಿಯಾ ವಾಘ್ (born Channagiri) and ಸರ್ದಾರ್ ವೀರನಗೌಡ in freedom fighters group.

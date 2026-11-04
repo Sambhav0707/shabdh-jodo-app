@@ -1,0 +1,11 @@
+# Doubts for level3b (Tamil)
+- Many compound groups are plain collocations (___ + head); word forms listed without sandhi consonant (ப்/க்/ச்) -- reviewer may want to confirm fairness.
+- Idiom groups (கை/கால்/தலை) use verbal forms such as கைதூக்கு, காலூன்று, தலைமறை; not all are dictionary headwords.
+- ஆசிரியப்பா/தொடை/அணி groups: items like ஏகதேச உருவகம் are textbook, ok; "பாம்பு பாம்பு" style அடுக்கு tiles are two-word.
+- இணைமொழி: கைகால், காடுகரை, உற்றார்உறவு-type joins are loose.
+- Palindromes (மாமா, தாத்தா, விகடகவி, தேருவருதே) valid by grapheme; check against game's reversal logic.
+- Animal gender/young names (கடுவன், பிணை, பெட்டை, ஏறு, கிடா) are classical; பெட்டை and கோழி-பாலில் vary.
+- கிரந்த group (ஜ ஷ ஸ ஹ க்ஷ ஸ்ரீ) uses conjunct graphemes; may exceed tile expectations.
+- Culture lists (சித்தர், ஆழ்வார், நாயன்மார், புலவர்) should be fact-checked.
+- "ஏரி/ அணை/ ஆறு" place groups were trimmed; remaining place-name groups are not included.
+- Some tiles are overlapping across groups (தேன், பால், கை, கால்) -- expected for compound pools.

@@ -13,6 +13,7 @@
   --tile-sel: #5a4a3a; --tile-sel-fg: #fff; --btn-border: #1f1b16; --card: #fffdf9; --hint: #e07a1f;
   --lv0: #f6d860; --lv1: #9fcb6b; --lv2: #9cb9f0; --lv3: #c08ad6;
   --toast-bg: #1f1b16; --toast-fg: #fff; --bar: #8b7b69;
+  --font: "Mukta", "Noto Sans Devanagari", system-ui, sans-serif;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
@@ -26,30 +27,35 @@
   --tile-sel: #e8dccb; --tile-sel-fg: #171411; --btn-border: #f3ede4; --card: #211c18; --hint: #ffa552;
   --toast-bg: #f3ede4; --toast-fg: #171411; --bar: #7d705f;
 }
+:root[lang="kn"] { --font: "Noto Sans Kannada", "Mukta", system-ui, sans-serif; }
+:root[lang="te"] { --font: "Noto Sans Telugu", "Mukta", system-ui, sans-serif; }
+:root[lang="ta"] { --font: "Noto Sans Tamil", "Mukta", system-ui, sans-serif; }
 * { box-sizing: border-box; }
 body {
-  margin: 0; background: var(--bg); color: var(--fg);
-  font-family: "Mukta", "Noto Sans Devanagari", system-ui, sans-serif;
+  margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font);
   -webkit-tap-highlight-color: transparent;
 }
+button, select { font-family: var(--font); }
 main { max-width: 560px; margin: 0 auto; padding: 16px; }
 header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-h1 { font-size: 1.6rem; margin: 0; font-weight: 800; white-space: nowrap; }
-.icons { display: flex; gap: 4px; }
+h1 { font-size: clamp(1rem, 4.8vw, 1.6rem); margin: 0; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.icons { display: flex; gap: 0; flex-shrink: 0; }
 .icon-btn {
-  width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%;
-  background: none; border: none; color: var(--fg); cursor: pointer;
+  width: 34px; height: 36px; display: grid; place-items: center; border-radius: 50%;
+  background: none; border: none; color: var(--fg); cursor: pointer; font-weight: 800; padding: 0;
 }
 .icon-btn:hover { background: var(--tile); }
-.icon-btn svg { width: 22px; height: 22px; }
+.icon-btn svg { width: 21px; height: 21px; }
 .sub { color: var(--muted); margin: 2px 0 14px; display: flex; justify-content: space-between; gap: 8px; }
-.board { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.board { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.board.loading { min-height: 240px; place-items: center; color: var(--muted); }
 .tile {
   aspect-ratio: 1.35; border: none; border-radius: 8px; background: var(--tile); color: var(--fg);
-  font: 600 clamp(0.95rem, 4.2vw, 1.25rem) "Mukta", sans-serif; cursor: pointer; padding: 4px;
-  transition: transform .1s, background .15s; line-height: 1.15; overflow-wrap: anywhere; position: relative;
+  font-weight: 600; font-size: clamp(0.95rem, 4.2vw, 1.25rem); cursor: pointer; padding: 4px;
+  transition: transform .1s, background .15s; line-height: 1.15; overflow-wrap: normal; position: relative;
 }
 .tile.long { font-size: clamp(0.8rem, 3.4vw, 1.05rem); }
+.tile.xlong { font-size: clamp(0.7rem, 2.9vw, 0.92rem); }
 .tile:hover { background: var(--tile-hover); }
 .tile:active { transform: scale(.96); }
 .tile.sel { background: var(--tile-sel); color: var(--tile-sel-fg); }
@@ -74,13 +80,14 @@ h1 { font-size: 1.6rem; margin: 0; font-weight: 800; white-space: nowrap; }
 .controls { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
 .btn {
   border: 1px solid var(--btn-border); background: transparent; color: var(--fg); border-radius: 999px;
-  padding: 9px 16px; font: 600 1rem "Mukta", sans-serif; cursor: pointer;
+  padding: 9px 16px; font-weight: 600; font-size: 1rem; cursor: pointer;
 }
 .btn.primary { background: var(--fg); color: var(--bg); }
 .btn:disabled { opacity: .4; cursor: default; }
 .toast {
   position: fixed; top: 18px; left: 50%; transform: translateX(-50%); background: var(--toast-bg); color: var(--toast-fg);
   padding: 8px 16px; border-radius: 8px; font-weight: 600; opacity: 0; pointer-events: none; transition: opacity .2s; z-index: 30;
+  max-width: calc(100% - 32px); text-align: center;
 }
 .toast.show { opacity: 1; }
 .result { text-align: center; margin-top: 18px; }
@@ -107,12 +114,19 @@ dialog ul { padding-left: 20px; }
 .archive { display: grid; grid-template-columns: repeat(auto-fill, minmax(52px, 1fr)); gap: 6px; margin-top: 12px; }
 .archive button {
   border: none; border-radius: 8px; background: var(--tile); color: var(--fg); padding: 8px 0 6px;
-  font: 600 .95rem "Mukta", sans-serif; cursor: pointer; line-height: 1.1;
+  font-weight: 600; font-size: .95rem; cursor: pointer; line-height: 1.1;
 }
 .archive button small { display: block; font-size: .8rem; }
 .archive button.won { background: var(--lv1); color: #1f1b16; }
 .archive button.lost { background: #e9a39b; color: #1f1b16; }
 .archive button.today { outline: 2px solid var(--fg); }
+.langs { display: grid; gap: 8px; margin-top: 12px; }
+.langs button {
+  display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--tile); border-radius: 10px;
+  background: var(--bg); color: var(--fg); padding: 12px 14px; font-size: 1.1rem; font-weight: 600; cursor: pointer;
+}
+.langs button small { color: var(--muted); font-weight: 400; font-family: "Mukta", sans-serif; }
+.langs button.cur { border-color: var(--fg); border-width: 2px; }
 .setting { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--tile); gap: 12px; }
 .setting select, .setting input { font: inherit; }
 select { background: var(--bg); color: var(--fg); border: 1px solid var(--btn-border); border-radius: 8px; padding: 4px 8px; }
@@ -123,18 +137,21 @@ select { background: var(--bg); color: var(--fg); border: 1px solid var(--btn-bo
 <body>
 <main>
   <header>
-    <h1>शब्द जोड़ो</h1>
+    <h1 id="title">शब्द जोड़ो</h1>
     <div class="icons">
-      <button class="icon-btn" id="helpBtn" aria-label="कैसे खेलें" title="कैसे खेलें">
+      <button class="icon-btn" id="langBtn" data-i18n-label="language">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h9M8.5 3v2M6 5c.5 3 2.5 5.5 5 7M11 5c-.5 3.5-3 6.5-6.5 8"/><path d="M12.5 21l4-10 4 10M14 17.5h5"/></svg>
+      </button>
+      <button class="icon-btn" id="helpBtn" data-i18n-label="howToPlay">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5V14"/><circle cx="12" cy="17.2" r=".6" fill="currentColor"/></svg>
       </button>
-      <button class="icon-btn" id="archiveBtn" aria-label="पिछली पहेलियाँ" title="पिछली पहेलियाँ">
+      <button class="icon-btn" id="archiveBtn" data-i18n-label="archive">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>
       </button>
-      <button class="icon-btn" id="statsBtn" aria-label="आँकड़े" title="आँकड़े">
+      <button class="icon-btn" id="statsBtn" data-i18n-label="stats">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 20V11M12 20V5M19 20v-6"/></svg>
       </button>
-      <button class="icon-btn" id="settingsBtn" aria-label="सेटिंग्स" title="सेटिंग्स">
+      <button class="icon-btn" id="settingsBtn" data-i18n-label="settings">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>
       </button>
     </div>
@@ -144,14 +161,14 @@ select { background: var(--bg); color: var(--fg); border: 1px solid var(--btn-bo
   <div class="board" id="board" aria-live="polite"></div>
 
   <div class="mistakes" id="mistakesWrap">
-    <span>बची हुई गलतियाँ:</span><span id="dots"></span>
+    <span data-i18n="mistakesLeft"></span><span id="dots"></span>
   </div>
 
   <div class="controls" id="controls">
-    <button class="btn" id="shuffleBtn">मिलाएँ</button>
-    <button class="btn" id="hintBtn">संकेत</button>
-    <button class="btn" id="clearBtn">हटाएँ</button>
-    <button class="btn primary" id="submitBtn" disabled>जमा करें</button>
+    <button class="btn" id="shuffleBtn" data-i18n="shuffle"></button>
+    <button class="btn" id="hintBtn" data-i18n="hint"></button>
+    <button class="btn" id="clearBtn" data-i18n="clear"></button>
+    <button class="btn primary" id="submitBtn" data-i18n="submit" disabled></button>
   </div>
 
   <section class="result hidden" id="result">
@@ -160,10 +177,10 @@ select { background: var(--bg); color: var(--fg); border: 1px solid var(--btn-bo
     <div class="grid-emoji" id="emojiGrid"></div>
     <p class="muted" id="nextIn"></p>
     <div class="controls">
-      <button class="btn primary" id="shareBtn">नतीजा शेयर करें</button>
-      <button class="btn" id="resultStatsBtn">आँकड़े</button>
-      <button class="btn" id="practiceBtn">अभ्यास पहेली</button>
-      <button class="btn hidden" id="todayBtn">आज की पहेली</button>
+      <button class="btn primary" id="shareBtn" data-i18n="share"></button>
+      <button class="btn" id="resultStatsBtn" data-i18n="stats"></button>
+      <button class="btn" id="practiceBtn" data-i18n="practiceBtn"></button>
+      <button class="btn hidden" id="todayBtn" data-i18n="todayBtn"></button>
     </div>
   </section>
 </main>
@@ -172,64 +189,194 @@ select { background: var(--bg); color: var(--fg); border: 1px solid var(--btn-bo
 <div class="toast" id="toast" role="status"></div>
 
 <dialog id="help">
-  <h2>कैसे खेलें</h2>
-  <p>16 शब्दों में से <b>4-4 शब्दों के समूह</b> बनाइए जिनमें कोई बात एक जैसी हो।</p>
-  <ul>
-    <li>चार शब्द चुनें और <b>जमा करें</b> दबाएँ।</li>
-    <li>आपके पास <b>4 गलतियाँ</b> हैं।</li>
-    <li>"बस एक शब्द गलत!" का मतलब है कि चार में से तीन शब्द एक ही समूह के हैं।</li>
-    <li>अटक गए? हर पहेली में एक बार <b>संकेत</b> ले सकते हैं।</li>
-    <li>हर दिन नई पहेली आती है। पुरानी पहेलियाँ <b>कैलेंडर</b> बटन से खेलें।</li>
-  </ul>
-  <p>समूहों का रंग कठिनाई बताता है:</p>
+  <h2 data-i18n="howToPlay"></h2>
+  <ul id="helpList"></ul>
+  <p data-i18n="colorsMean"></p>
   <div class="swatches">
-    <span class="lv0">आसान</span><span class="lv1">ठीक-ठाक</span><span class="lv2">कठिन</span><span class="lv3">बहुत कठिन</span>
+    <span class="lv0" data-i18n="lv0"></span><span class="lv1" data-i18n="lv1"></span>
+    <span class="lv2" data-i18n="lv2"></span><span class="lv3" data-i18n="lv3"></span>
   </div>
-  <form method="dialog" style="text-align:center;margin-top:12px"><button class="btn primary">खेलें</button></form>
+  <form method="dialog" style="text-align:center;margin-top:12px"><button class="btn primary" data-i18n="play"></button></form>
+</dialog>
+
+<dialog id="langDlg">
+  <div class="dlg-head"><h2 data-i18n="language"></h2><form method="dialog"><button class="icon-btn" aria-label="✕">✕</button></form></div>
+  <div class="langs" id="langList"></div>
 </dialog>
 
 <dialog id="statsDlg">
-  <div class="dlg-head"><h2>आँकड़े</h2><form method="dialog"><button class="icon-btn" aria-label="बंद करें">✕</button></form></div>
+  <div class="dlg-head"><h2 data-i18n="stats"></h2><form method="dialog"><button class="icon-btn" aria-label="✕">✕</button></form></div>
   <div class="stats" id="statsNums"></div>
-  <h3 style="margin:8px 0">जीत में कितनी गलतियाँ</h3>
+  <h3 style="margin:8px 0" data-i18n="distTitle"></h3>
   <div class="dist" id="dist"></div>
 </dialog>
 
 <dialog id="archiveDlg">
-  <div class="dlg-head"><h2>पिछली पहेलियाँ</h2><form method="dialog"><button class="icon-btn" aria-label="बंद करें">✕</button></form></div>
-  <p class="muted" style="margin:6px 0 0">कोई भी पुरानी पहेली खेलें। इनसे आपका लगातार जीतने का रिकॉर्ड नहीं बदलता।</p>
+  <div class="dlg-head"><h2 data-i18n="archive"></h2><form method="dialog"><button class="icon-btn" aria-label="✕">✕</button></form></div>
+  <p class="muted" style="margin:6px 0 0" data-i18n="archiveNote"></p>
   <div class="archive" id="archiveGrid"></div>
 </dialog>
 
 <dialog id="settingsDlg">
-  <div class="dlg-head"><h2>सेटिंग्स</h2><form method="dialog"><button class="icon-btn" aria-label="बंद करें">✕</button></form></div>
-  <label class="setting"><span>आवाज़</span><input type="checkbox" id="soundToggle"></label>
-  <label class="setting"><span>थीम</span>
-    <select id="themeSelect"><option value="system">सिस्टम जैसी</option><option value="light">हल्की</option><option value="dark">गहरी</option></select>
+  <div class="dlg-head"><h2 data-i18n="settings"></h2><form method="dialog"><button class="icon-btn" aria-label="✕">✕</button></form></div>
+  <label class="setting"><span data-i18n="language"></span><select id="langSelect"></select></label>
+  <label class="setting"><span data-i18n="sound"></span><input type="checkbox" id="soundToggle"></label>
+  <label class="setting"><span data-i18n="theme"></span>
+    <select id="themeSelect"><option value="system" data-i18n="themeSystem"></option><option value="light" data-i18n="themeLight"></option><option value="dark" data-i18n="themeDark"></option></select>
   </label>
-  <div class="setting"><span>सारी प्रगति मिटाएँ</span><button class="btn" id="resetBtn">मिटाएँ</button></div>
+  <div class="setting"><span data-i18n="resetLabel"></span><button class="btn" id="resetBtn" data-i18n="resetBtn"></button></div>
 </dialog>
 
-<script src="puzzles.js"></script>
 <script>
+// ---- languages ----
+const LANGS = {
+  hi: { name: "हिंदी", latin: "Hindi", htmlLang: "hi" },
+  hinglish: { name: "Hinglish", latin: "Hinglish", htmlLang: "hi-Latn" },
+  kn: { name: "ಕನ್ನಡ", latin: "Kannada", htmlLang: "kn", font: "Noto+Sans+Kannada" },
+  te: { name: "తెలుగు", latin: "Telugu", htmlLang: "te", font: "Noto+Sans+Telugu" },
+  ta: { name: "தமிழ்", latin: "Tamil", htmlLang: "ta", font: "Noto+Sans+Tamil" },
+};
+
+const I18N = {
+  hi: {
+    title: "शब्द जोड़ो", howToPlay: "कैसे खेलें", archive: "पिछली पहेलियाँ", stats: "आँकड़े", settings: "सेटिंग्स", language: "भाषा",
+    today: "आज की पहेली #", old: "पुरानी पहेली #", practice: "अभ्यास पहेली (इसका स्कोर नहीं गिना जाता)", loading: "लोड हो रहा है…",
+    mistakesLeft: "बची हुई गलतियाँ:", shuffle: "मिलाएँ", hint: "संकेत", clear: "हटाएँ", submit: "जमा करें",
+    won: "आपने पहेली सुलझा ली!", lost: "इस बार नहीं हो पाया", time: "समय", mistakes: "गलतियाँ", hintUsed: "💡 संकेत लिया",
+    nextIn: "अगली पहेली:", share: "नतीजा शेयर करें", practiceBtn: "अभ्यास पहेली", todayBtn: "आज की पहेली",
+    oneAway: "बस एक शब्द गलत!", wrong: "गलत जवाब", already: "यह पहले ही आज़मा चुके हैं", hintToast: "यह शब्द सबसे आसान समूह का है",
+    perfect: "शानदार! एक भी गलती नहीं 🎉", great: "बहुत बढ़िया! 🎉", nextTime: "अगली बार ज़रूर!", copied: "नतीजा कॉपी हो गया",
+    help: [
+      "16 शब्दों में से <b>4-4 शब्दों के समूह</b> बनाइए जिनमें कोई बात एक जैसी हो।",
+      "चार शब्द चुनें और <b>जमा करें</b> दबाएँ।",
+      "आपके पास <b>4 गलतियाँ</b> हैं।",
+      "\"बस एक शब्द गलत!\" का मतलब है कि चार में से तीन शब्द एक ही समूह के हैं।",
+      "अटक गए? हर पहेली में एक बार <b>संकेत</b> ले सकते हैं।",
+      "हर दिन नई पहेली आती है। पुरानी पहेलियाँ <b>कैलेंडर</b> बटन से खेलें।",
+    ],
+    colorsMean: "समूहों का रंग कठिनाई बताता है:", lv0: "आसान", lv1: "ठीक-ठाक", lv2: "कठिन", lv3: "बहुत कठिन", play: "खेलें",
+    played: "खेले", winPct: "जीत %", streak: "लगातार", maxStreak: "सबसे लंबा", distTitle: "जीत में कितनी गलतियाँ", lostShort: "हार",
+    archiveNote: "कोई भी पुरानी पहेली खेलें। इनसे आपका लगातार जीतने का रिकॉर्ड नहीं बदलता।", todayShort: "आज",
+    sound: "आवाज़", theme: "थीम", themeSystem: "सिस्टम जैसी", themeLight: "हल्की", themeDark: "गहरी",
+    resetLabel: "इस भाषा की प्रगति मिटाएँ", resetBtn: "मिटाएँ", resetConfirm: "क्या आप इस भाषा की सारी प्रगति और आँकड़े मिटाना चाहते हैं?", resetDone: "प्रगति मिटा दी गई",
+    loadFailed: "पहेलियाँ लोड नहीं हो सकीं",
+  },
+  hinglish: {
+    title: "Shabd Jodo", howToPlay: "Kaise khelein", archive: "Purani paheliyan", stats: "Stats", settings: "Settings", language: "Bhasha",
+    today: "Aaj ki paheli #", old: "Purani paheli #", practice: "Practice paheli (score nahi judta)", loading: "Load ho raha hai…",
+    mistakesLeft: "Bachi galtiyaan:", shuffle: "Shuffle", hint: "Hint", clear: "Hatao", submit: "Submit",
+    won: "Paheli solve ho gayi!", lost: "Is baar nahi hua", time: "Time", mistakes: "Galtiyaan", hintUsed: "💡 hint liya",
+    nextIn: "Agli paheli:", share: "Result share karo", practiceBtn: "Practice paheli", todayBtn: "Aaj ki paheli",
+    oneAway: "Bas ek galat!", wrong: "Galat jawab", already: "Ye pehle try kar chuke ho", hintToast: "Ye word sabse aasaan group ka hai",
+    perfect: "Zabardast! Ek bhi galti nahi 🎉", great: "Bahut badhiya! 🎉", nextTime: "Agli baar pakka!", copied: "Result copy ho gaya",
+    help: [
+      "16 words mein se <b>4-4 words ke groups</b> banao jinmein kuch common ho.",
+      "Chaar words chuno aur <b>Submit</b> dabao.",
+      "Tumhare paas <b>4 galtiyaan</b> hain.",
+      "\"Bas ek galat!\" matlab chaar mein se teen words ek hi group ke hain.",
+      "Atak gaye? Har paheli mein ek baar <b>Hint</b> le sakte ho.",
+      "Roz nayi paheli. Purani paheliyan <b>calendar</b> button se khelo.",
+    ],
+    colorsMean: "Group ka rang difficulty batata hai:", lv0: "Aasaan", lv1: "Theek-thaak", lv2: "Mushkil", lv3: "Bahut mushkil", play: "Khelo",
+    played: "Khele", winPct: "Jeet %", streak: "Streak", maxStreak: "Best streak", distTitle: "Jeet mein kitni galtiyaan", lostShort: "Haar",
+    archiveNote: "Koi bhi purani paheli khelo. Isse tumhari streak nahi badalti.", todayShort: "Aaj",
+    sound: "Sound", theme: "Theme", themeSystem: "System jaisa", themeLight: "Light", themeDark: "Dark",
+    resetLabel: "Is bhasha ki progress mitao", resetBtn: "Mitao", resetConfirm: "Is bhasha ki saari progress aur stats mitaani hai?", resetDone: "Progress mita di",
+    loadFailed: "Paheliyan load nahi hui",
+  },
+  kn: {
+    title: "ಪದ ಜೋಡಣೆ", howToPlay: "ಆಡುವುದು ಹೇಗೆ", archive: "ಹಳೆಯ ಒಗಟುಗಳು", stats: "ಅಂಕಿಅಂಶ", settings: "ಸೆಟ್ಟಿಂಗ್‌ಗಳು", language: "ಭಾಷೆ",
+    today: "ಇಂದಿನ ಒಗಟು #", old: "ಹಳೆಯ ಒಗಟು #", practice: "ಅಭ್ಯಾಸ ಒಗಟು (ಅಂಕ ಎಣಿಸುವುದಿಲ್ಲ)", loading: "ಲೋಡ್ ಆಗುತ್ತಿದೆ…",
+    mistakesLeft: "ಉಳಿದ ತಪ್ಪುಗಳು:", shuffle: "ಕಲಸು", hint: "ಸುಳಿವು", clear: "ತೆರವು", submit: "ಸಲ್ಲಿಸು",
+    won: "ನೀವು ಒಗಟು ಬಿಡಿಸಿದಿರಿ!", lost: "ಈ ಬಾರಿ ಆಗಲಿಲ್ಲ", time: "ಸಮಯ", mistakes: "ತಪ್ಪುಗಳು", hintUsed: "💡 ಸುಳಿವು ಬಳಸಿದಿರಿ",
+    nextIn: "ಮುಂದಿನ ಒಗಟು:", share: "ಫಲಿತಾಂಶ ಹಂಚಿಕೊಳ್ಳಿ", practiceBtn: "ಅಭ್ಯಾಸ ಒಗಟು", todayBtn: "ಇಂದಿನ ಒಗಟು",
+    oneAway: "ಒಂದೇ ಪದ ತಪ್ಪು!", wrong: "ತಪ್ಪು ಉತ್ತರ", already: "ಇದನ್ನು ಈಗಾಗಲೇ ಪ್ರಯತ್ನಿಸಿದ್ದೀರಿ", hintToast: "ಈ ಪದ ಅತ್ಯಂತ ಸುಲಭ ಗುಂಪಿನದು",
+    perfect: "ಅದ್ಭುತ! ಒಂದೂ ತಪ್ಪಿಲ್ಲ 🎉", great: "ತುಂಬಾ ಚೆನ್ನಾಗಿದೆ! 🎉", nextTime: "ಮುಂದಿನ ಬಾರಿ ಖಂಡಿತ!", copied: "ಫಲಿತಾಂಶ ನಕಲಾಯಿತು",
+    help: [
+      "16 ಪದಗಳಲ್ಲಿ ಏನಾದರೂ ಒಂದು ಸಾಮ್ಯವಿರುವ <b>4-4 ಪದಗಳ ಗುಂಪುಗಳನ್ನು</b> ಮಾಡಿ.",
+      "ನಾಲ್ಕು ಪದಗಳನ್ನು ಆರಿಸಿ <b>ಸಲ್ಲಿಸು</b> ಒತ್ತಿ.",
+      "ನಿಮಗೆ <b>4 ತಪ್ಪುಗಳಿಗೆ</b> ಅವಕಾಶವಿದೆ.",
+      "\"ಒಂದೇ ಪದ ತಪ್ಪು!\" ಎಂದರೆ ನಾಲ್ಕರಲ್ಲಿ ಮೂರು ಪದಗಳು ಒಂದೇ ಗುಂಪಿನವು.",
+      "ಸಿಲುಕಿಕೊಂಡರೆ, ಪ್ರತಿ ಒಗಟಿನಲ್ಲಿ ಒಮ್ಮೆ <b>ಸುಳಿವು</b> ಪಡೆಯಬಹುದು.",
+      "ಪ್ರತಿದಿನ ಹೊಸ ಒಗಟು. ಹಳೆಯ ಒಗಟುಗಳನ್ನು <b>ಕ್ಯಾಲೆಂಡರ್</b> ಬಟನ್‌ನಿಂದ ಆಡಿ.",
+    ],
+    colorsMean: "ಗುಂಪಿನ ಬಣ್ಣ ಕಠಿಣತೆಯನ್ನು ತೋರಿಸುತ್ತದೆ:", lv0: "ಸುಲಭ", lv1: "ಸಾಧಾರಣ", lv2: "ಕಠಿಣ", lv3: "ಅತಿ ಕಠಿಣ", play: "ಆಡಿ",
+    played: "ಆಡಿದ್ದು", winPct: "ಗೆಲುವು %", streak: "ಸತತ", maxStreak: "ಅತಿ ಹೆಚ್ಚು", distTitle: "ಗೆಲುವಿನಲ್ಲಿ ತಪ್ಪುಗಳು", lostShort: "ಸೋಲು",
+    archiveNote: "ಯಾವುದೇ ಹಳೆಯ ಒಗಟು ಆಡಿ. ಇದರಿಂದ ನಿಮ್ಮ ಸತತ ಗೆಲುವಿನ ದಾಖಲೆ ಬದಲಾಗುವುದಿಲ್ಲ.", todayShort: "ಇಂದು",
+    sound: "ಧ್ವನಿ", theme: "ಥೀಮ್", themeSystem: "ಸಿಸ್ಟಮ್‌ನಂತೆ", themeLight: "ತಿಳಿ", themeDark: "ಗಾಢ",
+    resetLabel: "ಈ ಭಾಷೆಯ ಪ್ರಗತಿ ಅಳಿಸಿ", resetBtn: "ಅಳಿಸಿ", resetConfirm: "ಈ ಭಾಷೆಯ ಎಲ್ಲ ಪ್ರಗತಿ ಮತ್ತು ಅಂಕಿಅಂಶ ಅಳಿಸಬೇಕೆ?", resetDone: "ಪ್ರಗತಿ ಅಳಿಸಲಾಯಿತು",
+    loadFailed: "ಒಗಟುಗಳು ಲೋಡ್ ಆಗಲಿಲ್ಲ",
+  },
+  te: {
+    title: "పద జోడి", howToPlay: "ఎలా ఆడాలి", archive: "పాత పజిల్స్", stats: "గణాంకాలు", settings: "సెట్టింగ్స్", language: "భాష",
+    today: "నేటి పజిల్ #", old: "పాత పజిల్ #", practice: "అభ్యాస పజిల్ (స్కోరు లెక్కించబడదు)", loading: "లోడ్ అవుతోంది…",
+    mistakesLeft: "మిగిలిన తప్పులు:", shuffle: "కలుపు", hint: "సూచన", clear: "తీసివేయి", submit: "సమర్పించు",
+    won: "మీరు పజిల్ పరిష్కరించారు!", lost: "ఈసారి కుదరలేదు", time: "సమయం", mistakes: "తప్పులు", hintUsed: "💡 సూచన తీసుకున్నారు",
+    nextIn: "తదుపరి పజిల్:", share: "ఫలితం షేర్ చేయండి", practiceBtn: "అభ్యాస పజిల్", todayBtn: "నేటి పజిల్",
+    oneAway: "ఒక్క పదం మాత్రమే తప్పు!", wrong: "తప్పు సమాధానం", already: "దీన్ని ఇప్పటికే ప్రయత్నించారు", hintToast: "ఈ పదం అత్యంత సులభమైన గుంపుది",
+    perfect: "అద్భుతం! ఒక్క తప్పు కూడా లేదు 🎉", great: "చాలా బాగుంది! 🎉", nextTime: "వచ్చేసారి తప్పకుండా!", copied: "ఫలితం కాపీ అయింది",
+    help: [
+      "16 పదాల నుండి ఏదో ఒక పోలిక ఉన్న <b>4-4 పదాల గుంపులు</b> చేయండి.",
+      "నాలుగు పదాలు ఎంచుకుని <b>సమర్పించు</b> నొక్కండి.",
+      "మీకు <b>4 తప్పుల</b> అవకాశం ఉంది.",
+      "\"ఒక్క పదం మాత్రమే తప్పు!\" అంటే నాలుగింటిలో మూడు పదాలు ఒకే గుంపువి.",
+      "ఇరుక్కుపోతే, ప్రతి పజిల్‌లో ఒకసారి <b>సూచన</b> తీసుకోవచ్చు.",
+      "ప్రతిరోజూ కొత్త పజిల్. పాత పజిల్స్‌ను <b>క్యాలెండర్</b> బటన్‌తో ఆడండి.",
+    ],
+    colorsMean: "గుంపు రంగు కష్టాన్ని చూపిస్తుంది:", lv0: "సులభం", lv1: "మధ్యస్థం", lv2: "కష్టం", lv3: "చాలా కష్టం", play: "ఆడండి",
+    played: "ఆడినవి", winPct: "గెలుపు %", streak: "వరుస", maxStreak: "అత్యధిక", distTitle: "గెలుపులో తప్పులు", lostShort: "ఓటమి",
+    archiveNote: "ఏ పాత పజిల్ అయినా ఆడండి. దీని వల్ల మీ వరుస గెలుపుల రికార్డు మారదు.", todayShort: "నేడు",
+    sound: "శబ్దం", theme: "థీమ్", themeSystem: "సిస్టమ్ లాగా", themeLight: "లేత", themeDark: "ముదురు",
+    resetLabel: "ఈ భాష ప్రగతి తొలగించు", resetBtn: "తొలగించు", resetConfirm: "ఈ భాషలోని మొత్తం ప్రగతి, గణాంకాలు తొలగించాలా?", resetDone: "ప్రగతి తొలగించబడింది",
+    loadFailed: "పజిల్స్ లోడ్ కాలేదు",
+  },
+  ta: {
+    title: "சொல் இணைப்பு", howToPlay: "எப்படி விளையாடுவது", archive: "பழைய புதிர்கள்", stats: "புள்ளிவிவரம்", settings: "அமைப்புகள்", language: "மொழி",
+    today: "இன்றைய புதிர் #", old: "பழைய புதிர் #", practice: "பயிற்சி புதிர் (மதிப்பெண் கணக்கில் இல்லை)", loading: "ஏற்றுகிறது…",
+    mistakesLeft: "மீதமுள்ள தவறுகள்:", shuffle: "கலக்கு", hint: "குறிப்பு", clear: "நீக்கு", submit: "சமர்ப்பி",
+    won: "நீங்கள் புதிரை விடுவித்தீர்கள்!", lost: "இந்த முறை முடியவில்லை", time: "நேரம்", mistakes: "தவறுகள்", hintUsed: "💡 குறிப்பு பெற்றீர்கள்",
+    nextIn: "அடுத்த புதிர்:", share: "முடிவைப் பகிரவும்", practiceBtn: "பயிற்சி புதிர்", todayBtn: "இன்றைய புதிர்",
+    oneAway: "ஒரே ஒரு சொல் தவறு!", wrong: "தவறான விடை", already: "இதை ஏற்கனவே முயன்றுவிட்டீர்கள்", hintToast: "இந்தச் சொல் எளிதான குழுவைச் சேர்ந்தது",
+    perfect: "அருமை! ஒரு தவறும் இல்லை 🎉", great: "மிக நன்று! 🎉", nextTime: "அடுத்த முறை நிச்சயம்!", copied: "முடிவு நகலெடுக்கப்பட்டது",
+    help: [
+      "16 சொற்களிலிருந்து ஏதோ ஒரு ஒற்றுமை உள்ள <b>4-4 சொற்களின் குழுக்களை</b> உருவாக்குங்கள்.",
+      "நான்கு சொற்களைத் தேர்ந்தெடுத்து <b>சமர்ப்பி</b> அழுத்துங்கள்.",
+      "உங்களுக்கு <b>4 தவறுகள்</b> வரை வாய்ப்பு உண்டு.",
+      "\"ஒரே ஒரு சொல் தவறு!\" என்றால் நான்கில் மூன்று சொற்கள் ஒரே குழுவைச் சேர்ந்தவை.",
+      "சிக்கிக்கொண்டால், ஒவ்வொரு புதிரிலும் ஒருமுறை <b>குறிப்பு</b> பெறலாம்.",
+      "தினமும் புதிய புதிர். பழைய புதிர்களை <b>நாள்காட்டி</b> பொத்தானில் விளையாடுங்கள்.",
+    ],
+    colorsMean: "குழுவின் நிறம் கடினத்தைக் காட்டும்:", lv0: "எளிது", lv1: "நடுத்தரம்", lv2: "கடினம்", lv3: "மிகக் கடினம்", play: "விளையாடு",
+    played: "விளையாடியது", winPct: "வெற்றி %", streak: "தொடர்", maxStreak: "அதிகபட்சம்", distTitle: "வெற்றியில் தவறுகள்", lostShort: "தோல்வி",
+    archiveNote: "எந்தப் பழைய புதிரையும் விளையாடலாம். இதனால் உங்கள் தொடர் வெற்றி சாதனை மாறாது.", todayShort: "இன்று",
+    sound: "ஒலி", theme: "தீம்", themeSystem: "சிஸ்டம் போல", themeLight: "வெளிர்", themeDark: "இருண்ட",
+    resetLabel: "இந்த மொழியின் முன்னேற்றத்தை அழி", resetBtn: "அழி", resetConfirm: "இந்த மொழியின் எல்லா முன்னேற்றமும் புள்ளிவிவரமும் அழிக்கவா?", resetDone: "முன்னேற்றம் அழிக்கப்பட்டது",
+    loadFailed: "புதிர்களை ஏற்ற முடியவில்லை",
+  },
+};
+
 const MAX_MISTAKES = 4;
-const EPOCH = new Date(2026, 0, 1); // day 0 = puzzle #1
+const EPOCH = new Date(2026, 0, 1); // day 0 = puzzle #1 in every language
 const EMOJI = ["🟨", "🟩", "🟦", "🟪"];
 const STORE = "shabd-jodo:";
 
 const $ = (id) => document.getElementById(id);
-const load = (k, d) => { try { const v = localStorage.getItem(STORE + k); return v == null ? d : JSON.parse(v); } catch { return d; } };
-const save = (k, v) => { try { localStorage.setItem(STORE + k, JSON.stringify(v)); } catch {} };
+const loadRaw = (k, d) => { try { const v = localStorage.getItem(STORE + k); return v == null ? d : JSON.parse(v); } catch { return d; } };
+const saveRaw = (k, v) => { try { localStorage.setItem(STORE + k, JSON.stringify(v)); } catch {} };
+// Games, results and stats are kept per language; settings are shared.
+const load = (k, d) => loadRaw(lang + ":" + k, d);
+const save = (k, v) => saveRaw(lang + ":" + k, v);
 const mod = (a, n) => ((a % n) + n) % n;
 const wait = (ms) => new Promise((r) => setTimeout(r, ms));
 const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const graphemes = window.Intl && Intl.Segmenter ? new Intl.Segmenter(undefined, { granularity: "grapheme" }) : null;
+const glyphCount = (w) => graphemes ? [...graphemes.segment(w)].length : w.length;
 
 // Same rule as the original: days since a fixed local-midnight epoch, wrapped over the puzzle list.
 function dayNumber(d = new Date()) {
   const midnight = new Date(d.getFullYear(), d.getMonth(), d.getDate());
   return Math.round((midnight - EPOCH) / 864e5);
 }
-const puzzleFor = (day) => mod(day, PUZZLES.length);
 function shuffled(arr) {
   const a = arr.slice();
   for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
@@ -240,11 +387,124 @@ function fmtTime(ms) {
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
 }
 
-let state;          // see newState()
+// Players from before languages existed kept Hindi data without a language prefix.
+(function migrateLegacy() {
+  try {
+    if (localStorage.getItem(STORE + "migrated")) return;
+    for (const k of Object.keys(localStorage)) {
+      const rest = k.slice(STORE.length);
+      if (k.startsWith(STORE) && /^(game-\d+|result-\d+|stats)$/.test(rest)) {
+        localStorage.setItem(STORE + "hi:" + rest, localStorage.getItem(k));
+        localStorage.removeItem(k);
+      }
+    }
+    localStorage.setItem(STORE + "migrated", "1");
+  } catch {}
+})();
+
+const settings = { sound: false, theme: "system", ...loadRaw("settings", {}) };
+function initialLang() {
+  const fromUrl = new URLSearchParams(location.search).get("lang");
+  if (fromUrl && LANGS[fromUrl]) return fromUrl;
+  if (settings.lang && LANGS[settings.lang]) return settings.lang;
+  for (const l of navigator.languages || []) {
+    const code = l.toLowerCase().split("-")[0];
+    if (["kn", "te", "ta", "hi"].includes(code)) return code;
+  }
+  return "hi";
+}
+
+let lang = initialLang();
+let t = I18N[lang];
+let PUZZLES = null;
+let state = null;   // see newState()
 let selected = [];
 let busy = false;   // true while a solve animation plays
 let freshLevel = null;
 
+const loaded = {};
+function loadPuzzles(code) {
+  if (window.PUZZLES_BY_LANG && window.PUZZLES_BY_LANG[code]) return Promise.resolve(window.PUZZLES_BY_LANG[code]);
+  if (!loaded[code]) loaded[code] = new Promise((resolve, reject) => {
+    const s = document.createElement("script");
+    s.src = `puzzles/${code}.js`;
+    s.onload = () => (window.PUZZLES_BY_LANG && window.PUZZLES_BY_LANG[code]) ? resolve(window.PUZZLES_BY_LANG[code]) : reject();
+    s.onerror = () => { delete loaded[code]; reject(); };
+    document.head.appendChild(s);
+  });
+  return loaded[code];
+}
+function loadFont(code) {
+  const f = LANGS[code].font;
+  if (!f || document.getElementById("font-" + code)) return;
+  const link = document.createElement("link");
+  link.id = "font-" + code;
+  link.rel = "stylesheet";
+  link.href = `https://fonts.googleapis.com/css2?family=${f}:wght@400;600;800&display=swap`;
+  document.head.appendChild(link);
+}
+
+function applyI18n() {
+  document.documentElement.lang = LANGS[lang].htmlLang;
+  document.title = t.title;
+  $("title").textContent = t.title;
+  document.querySelectorAll("[data-i18n]").forEach((el) => { el.textContent = t[el.dataset.i18n]; });
+  document.querySelectorAll("[data-i18n-label]").forEach((el) => {
+    el.setAttribute("aria-label", t[el.dataset.i18nLabel]);
+    el.title = t[el.dataset.i18nLabel];
+  });
+  $("helpList").innerHTML = t.help.map((line) => `<li>${line}</li>`).join("");
+  fitTitle();
+}
+
+// Shrinks the title until it fits beside the header icons (Tamil/Telugu titles are wider than Hindi).
+function fitTitle() {
+  const h = $("title");
+  h.style.fontSize = "";
+  let size = parseFloat(getComputedStyle(h).fontSize);
+  while (h.scrollWidth > h.clientWidth + 1 && size > 12) { size -= 1; h.style.fontSize = size + "px"; }
+}
+// Shrinks a tile's text until its longest word fits on one line, so words never break mid-letter.
+function fitTiles() {
+  document.querySelectorAll(".tile").forEach((el) => {
+    el.style.fontSize = "";
+    el.style.overflowWrap = "";
+    let size = parseFloat(getComputedStyle(el).fontSize);
+    while (el.scrollWidth > el.clientWidth + 1 && size > 11.5) { size -= 0.5; el.style.fontSize = size + "px"; }
+    // Still too wide at the smallest readable size: allow a break between letters.
+    if (el.scrollWidth > el.clientWidth + 1) el.style.overflowWrap = "anywhere";
+  });
+}
+addEventListener("resize", () => { fitTitle(); fitTiles(); });
+document.fonts && document.fonts.ready.then(fitTitle);
+
+async function setLang(code, { remember = true } = {}) {
+  lang = code;
+  t = I18N[lang];
+  if (remember) { settings.lang = code; saveRaw("settings", settings); }
+  const url = new URL(location.href);
+  url.searchParams.set("lang", code);
+  history.replaceState(null, "", url);
+  loadFont(code);
+  applyI18n();
+  $("langSelect").value = code;
+  state = null;
+  $("board").className = "board loading";
+  $("board").textContent = t.loading;
+  for (const id of ["controls", "mistakesWrap", "result"]) $(id).classList.add("hidden");
+  $("sub").textContent = "";
+  try {
+    PUZZLES = await loadPuzzles(code);
+  } catch {
+    $("board").textContent = t.loadFailed;
+    return;
+  }
+  if (code !== lang) return; // switched again while loading
+  $("board").className = "board";
+  startDaily();
+}
+
+const puzzleFor = (day) => mod(day, PUZZLES.length);
 function groupsOf(idx) { return PUZZLES[idx].groups.map(([name, words], level) => ({ name, words, level })); }
 
 function newState(mode, day, puzzleIdx) {
@@ -273,15 +533,21 @@ function startPractice() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-function persist() { if (state.mode !== "practice") save("game-" + state.day, state); }
+function persist() { if (state && state.mode !== "practice") save("game-" + state.day, state); }
 
 function subtitle() {
-  if (state.mode === "daily") return `आज की पहेली #${state.day + 1}`;
-  if (state.mode === "archive") return `पुरानी पहेली #${state.day + 1}`;
-  return "अभ्यास पहेली";
+  if (state.mode === "daily") return t.today + (state.day + 1);
+  if (state.mode === "archive") return t.old + (state.day + 1);
+  return t.practice;
+}
+
+function tileSizeClass(w) {
+  const n = LANGS[lang].htmlLang === "hi-Latn" ? w.length * 0.7 : glyphCount(w);
+  return n > 9 ? " xlong" : n > 6 ? " long" : "";
 }
 
 function render() {
+  if (!state) return;
   const board = $("board");
   board.innerHTML = "";
   const groups = groupsOf(state.puzzleIdx);
@@ -300,13 +566,14 @@ function render() {
   const solvedWords = new Set(shown.flatMap((l) => groups[l].words));
   for (const w of state.order.filter((w) => !solvedWords.has(w))) {
     const b = document.createElement("button");
-    b.className = "tile" + (selected.includes(w) ? " sel" : "") + (w === state.hintWord ? " hint" : "") + (w.length > 7 ? " long" : "");
+    b.className = "tile" + (selected.includes(w) ? " sel" : "") + (w === state.hintWord ? " hint" : "") + tileSizeClass(w);
     b.textContent = w;
     b.dataset.word = w;
     b.setAttribute("aria-pressed", selected.includes(w));
     b.onclick = () => toggle(w);
     board.appendChild(b);
   }
+  fitTiles();
   $("sub").textContent = subtitle();
   $("dots").innerHTML = Array.from({ length: MAX_MISTAKES }, (_, i) =>
     `<span class="dot${i < state.mistakes ? " used" : ""}"></span>`).join("");
@@ -328,25 +595,24 @@ function toggle(w) {
 }
 
 function levelOf(w) { return groupsOf(state.puzzleIdx).find((g) => g.words.includes(w)).level; }
+const tileOf = (w) => document.querySelector(`.tile[data-word="${CSS.escape(w)}"]`);
 
 async function submit() {
   if (selected.length !== 4 || busy) return;
   const seenKey = selected.slice().sort().join("|");
-  if (state.seen.includes(seenKey)) { toast("यह पहले ही आज़मा चुके हैं"); return; }
+  if (state.seen.includes(seenKey)) { toast(t.already); return; }
   state.seen.push(seenKey);
   const levels = selected.map(levelOf);
   state.guesses.push(levels);
   const counts = {};
   for (const l of levels) counts[l] = (counts[l] || 0) + 1;
   const best = Math.max(...Object.values(counts));
-  const tiles = selected.map((w) => document.querySelector(`.tile[data-word="${CSS.escape(w)}"]`));
 
   if (best === 4) {
     busy = true;
     render();
     if (!reducedMotion) {
-      selected.map((w) => document.querySelector(`.tile[data-word="${CSS.escape(w)}"]`))
-        .forEach((t, i) => { t.style.animationDelay = i * 90 + "ms"; t.classList.add("hop"); });
+      selected.map(tileOf).forEach((el, i) => { el.style.animationDelay = i * 90 + "ms"; el.classList.add("hop"); });
       await wait(650);
     }
     sound("correct");
@@ -359,8 +625,8 @@ async function submit() {
     state.mistakes++;
     sound("wrong");
     if (navigator.vibrate) navigator.vibrate(120);
-    toast(best === 3 ? "बस एक शब्द गलत!" : "गलत जवाब");
-    tiles.forEach((t) => { t.classList.remove("shake"); void t.offsetWidth; t.classList.add("shake"); });
+    toast(best === 3 ? t.oneAway : t.wrong);
+    selected.map(tileOf).forEach((el) => { el.classList.remove("shake"); void el.offsetWidth; el.classList.add("shake"); });
     if (state.mistakes >= MAX_MISTAKES) {
       selected = [];
       persist();
@@ -374,11 +640,10 @@ async function submit() {
 
 function useHint() {
   if (state.done || state.hintWord) return;
-  const groups = groupsOf(state.puzzleIdx);
-  const easiest = groups.find((g) => !state.solved.includes(g.level));
+  const easiest = groupsOf(state.puzzleIdx).find((g) => !state.solved.includes(g.level));
   state.hintWord = easiest.words[Math.floor(Math.random() * 4)];
   state.started = true;
-  toast("यह शब्द सबसे आसान समूह का है");
+  toast(t.hintToast);
   persist();
   render();
 }
@@ -387,8 +652,7 @@ function finish(won) {
   state.done = true;
   state.won = won;
   if (state.mode !== "practice") {
-    const prev = load("result-" + state.day, null);
-    if (!prev) {
+    if (!load("result-" + state.day, null)) {
       save("result-" + state.day, { won, mistakes: state.mistakes, time: state.elapsed });
       const s = getStats();
       s.played++;
@@ -408,8 +672,8 @@ function finish(won) {
   if (won) {
     sound("win");
     confetti();
-    toast(state.mistakes === 0 ? "शानदार! एक भी गलती नहीं 🎉" : "बहुत बढ़िया! 🎉");
-  } else toast("अगली बार ज़रूर!");
+    toast(state.mistakes === 0 ? t.perfect : t.great);
+  } else toast(t.nextTime);
 }
 
 function getStats() {
@@ -420,25 +684,26 @@ function getStats() {
 function emojiGrid() { return state.guesses.map((g) => g.map((l) => EMOJI[l]).join("")).join("\n"); }
 
 function renderResult() {
-  $("resultTitle").textContent = state.won ? "आपने पहेली सुलझा ली!" : "इस बार नहीं हो पाया";
-  $("resultMeta").textContent = `समय ${fmtTime(state.elapsed)} · गलतियाँ ${state.mistakes}` + (state.hintWord ? " · 💡 संकेत लिया" : "");
+  $("resultTitle").textContent = state.won ? t.won : t.lost;
+  $("resultMeta").textContent = `${t.time} ${fmtTime(state.elapsed)} · ${t.mistakes} ${state.mistakes}` + (state.hintWord ? " · " + t.hintUsed : "");
   $("emojiGrid").textContent = emojiGrid();
   $("todayBtn").classList.toggle("hidden", state.mode === "daily");
   updateCountdown();
 }
 
 function renderTimer() {
-  $("timer").textContent = state.started || state.done ? "⏱ " + fmtTime(state.elapsed) : "";
+  $("timer").textContent = state && (state.started || state.done) ? "⏱ " + fmtTime(state.elapsed) : "";
 }
 
 function updateCountdown() {
+  if (!state) return;
   if (state.mode === "daily" && state.day !== dayNumber() && state.done) { startDaily(); return; }
   if (!state.done) return;
   if (state.mode !== "daily") { $("nextIn").textContent = ""; return; }
   const now = new Date();
   const ms = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1) - now;
   const pad = (n) => String(n).padStart(2, "0");
-  $("nextIn").textContent = `अगली पहेली: ${pad(Math.floor(ms / 36e5))}:${pad(Math.floor((ms % 36e5) / 6e4))}:${pad(Math.floor((ms % 6e4) / 1e3))}`;
+  $("nextIn").textContent = `${t.nextIn} ${pad(Math.floor(ms / 36e5))}:${pad(Math.floor((ms % 36e5) / 6e4))}:${pad(Math.floor((ms % 6e4) / 1e3))}`;
 }
 
 // The timer runs only while the game is in progress and the tab is visible.
@@ -451,16 +716,16 @@ setInterval(() => {
     if (Math.floor(state.elapsed / 1000) % 5 === 0) persist();
   }
   lastTick = now;
-  if (state) updateCountdown();
+  updateCountdown();
 }, 1000);
-document.addEventListener("visibilitychange", () => { lastTick = Date.now(); if (document.hidden && state) persist(); });
+document.addEventListener("visibilitychange", () => { lastTick = Date.now(); if (document.hidden) persist(); });
 
 async function share() {
-  const label = state.mode === "practice" ? "(अभ्यास)" : `#${state.day + 1}`;
-  const text = `शब्द जोड़ो ${label}${state.hintWord ? " 💡" : ""}\n⏱ ${fmtTime(state.elapsed)}\n${emojiGrid()}`;
+  const label = state.mode === "practice" ? t.practiceBtn : `#${state.day + 1}`;
+  const text = `${t.title} (${LANGS[lang].name}) ${label}${state.hintWord ? " 💡" : ""}\n⏱ ${fmtTime(state.elapsed)}\n${emojiGrid()}`;
   try {
     if (navigator.share) await navigator.share({ text });
-    else { await navigator.clipboard.writeText(text); toast("नतीजा कॉपी हो गया"); }
+    else { await navigator.clipboard.writeText(text); toast(t.copied); }
   } catch {}
 }
 
@@ -468,16 +733,17 @@ async function share() {
 function openStats() {
   const s = getStats();
   const pct = s.played ? Math.round((s.wins / s.played) * 100) : 0;
-  $("statsNums").innerHTML = [["खेले", s.played], ["जीत %", pct], ["लगातार", s.streak], ["सबसे लंबा", s.maxStreak]]
+  $("statsNums").innerHTML = [[t.played, s.played], [t.winPct, pct], [t.streak, s.streak], [t.maxStreak, s.maxStreak]]
     .map(([k, v]) => `<div><b>${v}</b><small>${k}</small></div>`).join("");
   const max = Math.max(1, ...s.dist);
-  const cur = state.done && state.mode !== "practice" ? (state.won ? state.mistakes : 4) : -1;
+  const cur = state && state.done && state.mode !== "practice" ? (state.won ? state.mistakes : 4) : -1;
   $("dist").innerHTML = s.dist.map((n, i) =>
-    `<span>${i === 4 ? "हार" : i}</span><div class="bar${i === cur ? " cur" : ""}" style="width:${Math.max(8, (n / max) * 100)}%">${n}</div>`).join("");
+    `<span>${i === 4 ? t.lostShort : i}</span><div class="bar${i === cur ? " cur" : ""}" style="width:${Math.max(8, (n / max) * 100)}%">${n}</div>`).join("");
   $("statsDlg").showModal();
 }
 
 function openArchive() {
+  if (!PUZZLES) return;
   const today = dayNumber();
   const grid = $("archiveGrid");
   grid.innerHTML = "";
@@ -485,30 +751,46 @@ function openArchive() {
     const r = load("result-" + d, null);
     const b = document.createElement("button");
     b.className = (r ? (r.won ? "won" : "lost") : "") + (d === today ? " today" : "");
-    b.innerHTML = `${d + 1}<small>${r ? (r.won ? "✓" : "✗") : d === today ? "आज" : "&nbsp;"}</small>`;
-    b.setAttribute("aria-label", `पहेली ${d + 1}`);
+    b.innerHTML = `${d + 1}<small>${r ? (r.won ? "✓" : "✗") : d === today ? t.todayShort : "&nbsp;"}</small>`;
+    b.setAttribute("aria-label", `#${d + 1}`);
     b.onclick = () => { $("archiveDlg").close(); openDay(d); window.scrollTo({ top: 0 }); };
     grid.appendChild(b);
   }
   $("archiveDlg").showModal();
 }
 
-function applyTheme(t) {
-  if (t === "system") document.documentElement.removeAttribute("data-theme");
-  else document.documentElement.dataset.theme = t;
+function openLangs() {
+  const list = $("langList");
+  list.innerHTML = "";
+  for (const [code, info] of Object.entries(LANGS)) {
+    const b = document.createElement("button");
+    b.className = code === lang ? "cur" : "";
+    b.innerHTML = `<span></span><small></small>`;
+    b.querySelector("span").textContent = info.name;
+    b.querySelector("small").textContent = info.latin;
+    b.onclick = () => { $("langDlg").close(); if (code !== lang) setLang(code); };
+    list.appendChild(b);
+  }
+  $("langDlg").showModal();
 }
-const settings = { sound: false, theme: "system", ...load("settings", {}) };
+
+function applyTheme(th) {
+  if (th === "system") document.documentElement.removeAttribute("data-theme");
+  else document.documentElement.dataset.theme = th;
+}
 applyTheme(settings.theme);
+$("langSelect").innerHTML = Object.entries(LANGS).map(([c, i]) => `<option value="${c}">${i.name}</option>`).join("");
 $("soundToggle").checked = settings.sound;
 $("themeSelect").value = settings.theme;
-$("soundToggle").onchange = (e) => { settings.sound = e.target.checked; save("settings", settings); sound("tap"); };
-$("themeSelect").onchange = (e) => { settings.theme = e.target.value; save("settings", settings); applyTheme(settings.theme); };
+$("langSelect").onchange = (e) => { $("settingsDlg").close(); setLang(e.target.value); };
+$("soundToggle").onchange = (e) => { settings.sound = e.target.checked; saveRaw("settings", settings); sound("tap"); };
+$("themeSelect").onchange = (e) => { settings.theme = e.target.value; saveRaw("settings", settings); applyTheme(settings.theme); };
 $("resetBtn").onclick = () => {
-  if (!confirm("क्या आप सारी प्रगति और आँकड़े मिटाना चाहते हैं?")) return;
-  try { Object.keys(localStorage).filter((k) => k.startsWith(STORE) && !k.endsWith("settings")).forEach((k) => localStorage.removeItem(k)); } catch {}
+  if (!confirm(t.resetConfirm)) return;
+  try { Object.keys(localStorage).filter((k) => k.startsWith(STORE + lang + ":")).forEach((k) => localStorage.removeItem(k)); } catch {}
   $("settingsDlg").close();
-  startDaily();
-  toast("प्रगति मिटा दी गई");
+  if (PUZZLES) startDaily();
+  toast(t.resetDone);
 };
 
 // ---- sound (Web Audio, off by default) ----
@@ -524,12 +806,12 @@ function sound(kind) {
       const o = audioCtx.createOscillator(), g = audioCtx.createGain();
       o.type = kind === "wrong" ? "sawtooth" : "triangle";
       o.frequency.value = freq;
-      const t = audioCtx.currentTime + at;
-      g.gain.setValueAtTime(0.0001, t);
-      g.gain.exponentialRampToValueAtTime(kind === "wrong" ? 0.06 : 0.12, t + 0.01);
-      g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+      const start = audioCtx.currentTime + at;
+      g.gain.setValueAtTime(0.0001, start);
+      g.gain.exponentialRampToValueAtTime(kind === "wrong" ? 0.06 : 0.12, start + 0.01);
+      g.gain.exponentialRampToValueAtTime(0.0001, start + dur);
       o.connect(g).connect(audioCtx.destination);
-      o.start(t); o.stop(t + dur + 0.02);
+      o.start(start); o.stop(start + dur + 0.02);
     }
   } catch {}
 }
@@ -562,11 +844,11 @@ function confetti() {
 
 let toastTimer;
 function toast(msg) {
-  const t = $("toast");
-  t.textContent = msg;
-  t.classList.add("show");
+  const el = $("toast");
+  el.textContent = msg;
+  el.classList.add("show");
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => t.classList.remove("show"), 1800);
+  toastTimer = setTimeout(() => el.classList.remove("show"), 1800);
 }
 
 $("shuffleBtn").onclick = () => { state.order = shuffled(state.order); persist(); render(); };
@@ -576,14 +858,15 @@ $("hintBtn").onclick = useHint;
 $("shareBtn").onclick = share;
 $("practiceBtn").onclick = startPractice;
 $("todayBtn").onclick = startDaily;
+$("langBtn").onclick = openLangs;
 $("helpBtn").onclick = () => $("help").showModal();
 $("statsBtn").onclick = openStats;
 $("resultStatsBtn").onclick = openStats;
 $("archiveBtn").onclick = openArchive;
 $("settingsBtn").onclick = () => $("settingsDlg").showModal();
 
-startDaily();
-if (!load("seenHelp", false)) { $("help").showModal(); save("seenHelp", true); }
+setLang(lang, { remember: false });
+if (!loadRaw("seenHelp", false)) { $("help").showModal(); saveRaw("seenHelp", true); }
 </script>
 </body>
 </html>

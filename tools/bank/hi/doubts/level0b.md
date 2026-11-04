@@ -1,0 +1,12 @@
+# level0b doubts (Hindi)
+- "सँड़सी" (गर्म बर्तन उठाने का सामान) is a variant of संडासी; both listed, check spelling.
+- "डिश" under रिमोट से चलने वाली चीज़ें is weak; consider dropping.
+- "लूट", "ढील" (पतंग group) are colloquial kite terms; verify.
+- "नील" (चोट के प्रकार) = bruise; "ज़िमीकंद", "फालसा", "करौंदा" may be regional.
+- Names/places: "दउरा" (छठ), "पूकलम", "थिरुवातिरा", "सद्या" are festival-specific.
+- Spelling variants: ख़ुदा हाफ़िज़, आतिशबाज़ी, मुज़फ़्फ़रपुर, ज़िमीकंद.
+- Loose categories: "बच्चों की पसंदीदा चीज़ें", "रंग-बिरंगी चीज़ें", "हर रोज़ की दिनचर्या", "बाग़ के जीव".
+- "घर के ख़र्चे" includes बिजली बिल (2 words, fine) ; "चौकीदार का सामान" overlaps level0 पुलिस group (3 words).
+- Overlap with level0 (3 shared words): सब्ज़ी/फल/जानवर-type groups such as लंबी सब्ज़ियाँ, मुरब्बा vs अचार, पालतू पक्षी.
+- Names ending "के दूसरे नाम" vs "के लिए शब्द": synonym sets (e.g. शुरू, ज़रा-सा) may be borderline.
+- "मांस खाने वाले जानवर" renamed "मांसाहारी जीव": includes शार्क/अजगर/मगरमच्छ, check fit.

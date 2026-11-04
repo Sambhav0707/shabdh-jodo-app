@@ -1,0 +1,12 @@
+- Many two-word dish names (e.g. "ಹಲಸಿನ ಕಡುಬು", "ಮಾವಿನ ತೊಕ್ಕು") are compositional, not fixed terms; check naturalness.
+- "ಮಂಗಳೂರು ಬನ್ಸ್", "ಕೋರಿ ರೊಟ್ಟಿ", "ಒತ್ತು ಶ್ಯಾವಿಗೆ" regional spellings may vary.
+- Several words repeat across groups on purpose (ಹಲಸು, ಆಲ, ಅರಳಿ, ಬಾದಾಮಿ, ಏಲಕ್ಕಿ, ಕಾಳುಮೆಣಸು, ಬೆಲ್ಲ); dedupe at puzzle build.
+- Planet / nakshatra / rashi groups may overlap with the other writer's culture groups.
+- "ಬೀಟೆ", "ಹೊನ್ನೆ", "ನಂದಿ", "ಮತ್ತಿ" tree names: spellings regional.
+- "ಕಡಲೆಬೇಳೆ ಪಾಯಸ", "ಖರ್ಜೂರ ಹೋಳಿಗೆ", "ಶೇಂಗಾ ಹೋಳಿಗೆ" variants less common.
+- "ತಾಟಿನುಂಗು", "ಕಸ್ತೂರಿ ಮೃಗ", "ಕಾಡಿಲಿ" are rare; may remove.
+- Rashi/nakshatra spellings (ಕರ್ಕಾಟಕ, ಕೃತ್ತಿಕೆ, ಮೃಗಶಿರ) vary.
+- Breed names (ಹಳ್ಳಿಕಾರ್, ಅಮೃತ್ ಮಹಲ್, ಮಲೆನಾಡು ಗಿಡ್ಡ) and rice varieties (ಜಯ, ಮಟ್ಟಿ, ಗಂಧಸಾಲೆ) are specialist.
+- Health groups ("ಹೃದಯಾಘಾತದ ಲಕ್ಷಣಗಳು", "ಮೂಳೆ ಮುರಿತದ ಚಿಕಿತ್ಸೆ") are loose; "ಕೀಲು ನೋವಿಗೆ ಹಚ್ಚುವ ಎಣ್ಣೆಗಳು" brand-like.
+- English loanwords (ಸ್ಯಾನಿಟೈಸರ್, ಇಯರ್‌ಫೋನ್, ಬೀಟ್‌ರೂಟ್) use ZWNJ; check rendering.
+- "ಇಸ್ರೋ ಯೋಜನೆಗಳು" lists ಆರ್ಯಭಟ (a satellite) beside missions.

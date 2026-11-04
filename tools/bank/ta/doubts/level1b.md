@@ -1,0 +1,10 @@
+- Many groups overlap in words across groups (e.g. தம்பி, மருமகள், மணி, சக்கரம், வேல், காவடி); the selector should avoid pairing such groups in one puzzle.
+- Slang/dialect groups (நெல்லை, கொங்கு, பேச்சுத் தமிழ்) may be region-specific: ஏல, வே, ஏட்டி, மக்கா, ஏனுங்க.
+- Archaic kin terms: ஓட்டன், பரன் (generations), எள்ளுப் பேத்தி, உடன்பிறந்தாள், சகலை.
+- Old measures: குந்துமணி, கழஞ்சு, காணி, வேலி, வீசை, மணங்கு, தோலா, யோஜனை, காதம் - regional values vary.
+- Old coins: அணா, சல்லி, தம்பிடி, வராகன்.
+- Mixed-language groups (கிரிக்கெட் fielding positions, tennis, chess terms) use transliterated English words; spelling varies.
+- Kalki novel / film titles and celebrity-name groups (திரைப்பட, இயக்குநர், நடிகர்) are fact-heavy; verify names/spellings.
+- ஐங்குறுநூறு/பரிபாடல் etc. in எட்டுத்தொகை are correct; வளையாபதி/குண்டலகேசி are partly lost epics.
+- Grammar groups: வேற்றுமை உருபுகள் (ஐ, ஆல், கு, இன், அது, கண்) are 1-2 letter tiles.
+- Rare word forms: இளவல், தெரிவை, வாரிதி, பாகப்பிரிவினை; ரத உற்சவத்தில் group is thin.
